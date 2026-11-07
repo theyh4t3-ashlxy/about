@@ -5,18 +5,22 @@ import { projectsData } from "../data/projects";
 export function ProjectsView() {
   const getProjectIcon = (id: string) => {
     switch (id) {
-      case "hyprland-dots":
+      case "delirium":
         return "icon-regular-computer-monitor";
-      case "fan-control":
-        return "icon-regular-gear";
-      case "keygen":
-        return "icon-regular-shield-check";
+      case "forktune":
+        return "icon-regular-circle-play";
+      case "cxh-opener":
+        return "icon-regular-code";
       case "rust-doom":
         return "icon-regular-flame";
+      case "keygen":
+        return "icon-regular-shield-check";
+      case "fan-control":
+        return "icon-regular-gear";
       case "libadwaita-web":
         return "icon-filled-studio";
       default:
-        return "icon-regular-code";
+        return "icon-regular-folder";
     }
   };
 
