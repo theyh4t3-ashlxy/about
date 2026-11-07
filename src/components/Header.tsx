@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Badge, StatusIndicator } from "@rbx/foundation-ui";
+import { Badge, Icon, StatusIndicator } from "@rbx/foundation-ui";
 
 export function Header() {
   const [time, setTime] = useState("");
@@ -17,31 +17,33 @@ export function Header() {
   }, []);
 
   return (
-    <header className="w-full bg-[#191b1d] border-b border-[#2d3136] px-4 py-3 flex items-center justify-between sticky top-0 z-50">
-      <div className="flex items-center gap-3">
-        <div className="w-6 h-6 bg-[#00A2FF] rounded flex items-center justify-center font-bold text-black text-xs select-none">
-          R
+    <header className="width-full bg-surface-100 border-b border-stroke-default px-6 py-3.5 flex items-center justify-between sticky top-0 z-50">
+      <div className="flex items-center gap-small">
+        <div className="flex items-center justify-center p-1 rounded-small bg-surface-200">
+          <Icon name="icon-filled-studio" size="Medium" className="content-emphasis" />
         </div>
-        <div className="flex items-center gap-2">
-          <span className="font-bold text-sm tracking-wide text-[#f2f4f5] font-extended">ashley_os</span>
+        <div className="flex items-center gap-xsmall">
+          <span className="font-extended text-heading-small content-emphasis tracking-tight">
+            ashley_os
+          </span>
           <Badge label="foundation" size="XSmall" variant="Emphasis" />
           <Badge label="tokyo.r0" size="XSmall" variant="Neutral" />
         </div>
       </div>
 
-      <div className="flex items-center gap-4 text-xs text-[#a7b0b5]">
-        <div className="flex items-center gap-2 font-mono bg-[#111216] px-2.5 py-1 rounded-full border border-[#2d3136]">
+      <div className="flex items-center gap-medium text-caption-large content-muted">
+        <div className="flex items-center gap-xsmall font-mono bg-surface-0 px-3 py-1 rounded-circle border border-stroke-default">
           <StatusIndicator variant="Dot" color="Success" size="Small" />
-          <span>online</span>
-          <span className="text-[#646b73]">|</span>
-          <span className="text-[#f2f4f5]">{time || "23:35"}</span>
+          <span className="content-default">online</span>
+          <span className="content-subtle">|</span>
+          <span className="content-emphasis font-bold">{time || "23:35"}</span>
         </div>
 
-        <div className="hidden sm:flex items-center gap-3 font-mono">
-          <span className="text-xs bg-[#24272c] px-2 py-0.5 rounded text-[#cbd3d9]">
+        <div className="hidden sm:flex items-center gap-small font-mono">
+          <span className="bg-surface-0 px-2.5 py-1 rounded-small border border-stroke-default content-default">
             79% juice
           </span>
-          <span className="text-xs bg-[#24272c] px-2 py-0.5 rounded text-[#cbd3d9]">
+          <span className="bg-surface-0 px-2.5 py-1 rounded-small border border-stroke-default content-default">
             64°c
           </span>
         </div>

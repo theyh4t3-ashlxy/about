@@ -4,49 +4,50 @@ import { anomaliesData } from "../data/anomalies";
 
 export function AnomaliesView() {
   return (
-    <div className="space-y-4">
-      <div className="mb-3">
-        <h2 className="text-sm font-semibold uppercase tracking-wider text-[#cbd3d9]">
+    <div className="flex flex-col gap-medium">
+      <div className="mb-2">
+        <h2 className="text-title-medium uppercase tracking-wider content-emphasis font-bold">
           ledger of shame & anomalies
         </h2>
-        <p className="text-xs text-[#8f98a0]">runtime bugs and fixed regressions</p>
+        <p className="text-body-medium content-muted">runtime bugs and fixed regressions</p>
       </div>
 
-      <div className="space-y-3">
+      <div className="flex flex-col gap-small">
         {anomaliesData.map((item) => {
           const isResolved = item.status === "resolved";
           const isPushed = item.status === "pushed";
-          const isOpen = item.status === "open";
 
           return (
             <Card
               key={item.id}
-              className="!bg-[#191b1d] border border-[#2d3136] !p-4 rounded-xl flex items-center justify-between hover:border-[#3e444b] transition-colors"
-            >
-              <div className="flex items-center gap-3.5">
+              variant="Standard"
+              density="Compact"
+              className="border border-stroke-default hover:border-stroke-emphasis transition-colors"
+              leading={
                 <StatusIndicator
                   variant="Dot"
                   color={isResolved ? "Success" : isPushed ? "Emphasis" : "Warning"}
                   size="Medium"
                 />
-                <div>
-                  <div className="text-sm font-bold text-[#f2f4f5] font-mono">
-                    {item.title}
-                  </div>
-                  <div className="text-xs text-[#8f98a0] mt-0.5 max-w-xl">
-                    {item.description}
-                  </div>
-                </div>
-              </div>
-
-              <div>
+              }
+              title={
+                <span className="text-title-small font-mono content-emphasis">
+                  {item.title}
+                </span>
+              }
+              description={
+                <span className="text-body-medium content-muted">
+                  {item.description}
+                </span>
+              }
+              trailing={
                 <Badge
                   label={item.tag}
                   size="Small"
                   variant={isResolved ? "Success" : isPushed ? "Standard" : "Warning"}
                 />
-              </div>
-            </Card>
+              }
+            />
           );
         })}
       </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Tabs, TabsList, TabsTrigger, TabsContent, Badge } from "@rbx/foundation-ui";
+import { Tabs, TabsList, TabsTrigger, TabsContent, useFoundationTheme } from "@rbx/foundation-ui";
 import { Header } from "./components/Header";
 import { ProfileHero } from "./components/ProfileHero";
 import { TelemetryView } from "./components/TelemetryView";
@@ -11,6 +11,9 @@ import type { AccentColor } from "./types";
 export default function App() {
   const [accent, setAccent] = useState<AccentColor>("blue");
 
+  // Initialize official Roblox Foundation theme
+  useFoundationTheme("dark", typeof document !== "undefined" ? document.documentElement : undefined);
+
   useEffect(() => {
     const hex = profileData.accentOptions.find((a) => a.id === accent)?.hex || "#3584e4";
     document.documentElement.style.setProperty("--accent-color", hex);
@@ -18,33 +21,33 @@ export default function App() {
   }, [accent]);
 
   return (
-    <div className="dark-theme min-h-screen bg-[#111216] text-[#f2f4f5] flex flex-col font-sans selection:bg-[#00A2FF]/30 selection:text-[#f2f4f5]">
+    <div className="dark-theme min-h-screen bg-surface-0 content-default flex flex-col font-sans selection:bg-system-emphasis/30">
       <Header />
 
-      <main className="flex-1 max-w-5xl w-full mx-auto px-4 py-8 space-y-8">
+      <main className="flex-1 max-w-5xl width-full mx-auto px-4 py-8 flex flex-col gap-large">
         <ProfileHero currentAccent={accent} onAccentChange={setAccent} />
 
-        <div className="bg-[#16181b] border border-[#2d3136] rounded-2xl p-6 shadow-2xl">
+        <div className="bg-surface-100 rounded-large border border-stroke-default p-6 shadow-sm">
           <Tabs defaultValue="telemetry" size="Medium" variant="Contained">
-            <TabsList className="!bg-[#111216] !border !border-[#2d3136] !p-1.5 rounded-xl mb-6 flex flex-wrap gap-1">
+            <TabsList className="bg-surface-0 border border-stroke-default p-1.5 rounded-medium mb-6 flex flex-wrap gap-xsmall">
               <TabsTrigger
                 value="telemetry"
-                className="!px-4 !py-2 rounded-lg text-xs font-semibold tracking-wide data-[state=active]:!bg-[#24272c] data-[state=active]:!text-[#f2f4f5] text-[#a7b0b5] transition-all"
+                className="px-4 py-2 rounded-small text-label-medium content-muted data-[state=active]:content-emphasis data-[state=active]:bg-surface-200 transition-all cursor-pointer"
               >
                 telemetry & silicon
               </TabsTrigger>
               <TabsTrigger
                 value="projects"
-                className="!px-4 !py-2 rounded-lg text-xs font-semibold tracking-wide data-[state=active]:!bg-[#24272c] data-[state=active]:!text-[#f2f4f5] text-[#a7b0b5] transition-all"
+                className="px-4 py-2 rounded-small text-label-medium content-muted data-[state=active]:content-emphasis data-[state=active]:bg-surface-200 transition-all cursor-pointer"
               >
                 repos & payloads
               </TabsTrigger>
               <TabsTrigger
                 value="bugs"
-                className="!px-4 !py-2 rounded-lg text-xs font-semibold tracking-wide data-[state=active]:!bg-[#24272c] data-[state=active]:!text-[#f2f4f5] text-[#a7b0b5] transition-all flex items-center gap-2"
+                className="px-4 py-2 rounded-small text-label-medium content-muted data-[state=active]:content-emphasis data-[state=active]:bg-surface-200 transition-all cursor-pointer flex items-center gap-xsmall"
               >
                 <span>anomalies & chaos</span>
-                <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-[#e5a50a]/20 text-[#e5a50a] font-mono">
+                <span className="px-1.5 py-0.5 rounded-full text-caption-small bg-system-warning/20 content-system-warning font-mono">
                   1 open
                 </span>
               </TabsTrigger>
@@ -65,7 +68,7 @@ export default function App() {
         </div>
       </main>
 
-      <footer className="w-full border-t border-[#24272c] bg-[#141518] py-4 text-center text-xs font-mono text-[#646b73]">
+      <footer className="width-full border-t border-stroke-default bg-surface-100 py-6 text-align-center text-caption-large font-mono content-muted">
         thinkpad t16 · roblox foundation-web · arch linux (x86_64)
       </footer>
     </div>
