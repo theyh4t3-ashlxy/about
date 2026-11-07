@@ -23,7 +23,7 @@ export function Header() {
           R
         </div>
         <div className="flex items-center gap-2">
-          <span className="font-semibold text-sm tracking-wide text-[#f2f4f5]">ashley_os</span>
+          <span className="font-bold text-sm tracking-wide text-[#f2f4f5] font-extended">ashley_os</span>
           <Badge label="foundation" size="XSmall" variant="Emphasis" />
           <Badge label="tokyo.r0" size="XSmall" variant="Neutral" />
         </div>

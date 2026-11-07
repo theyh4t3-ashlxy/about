@@ -22,7 +22,7 @@ export function ProfileHero({ currentAccent, onAccentChange }: ProfileHeroProps)
           />
           <div>
             <div className="flex items-center gap-3">
-              <h1 className="text-xl md:text-2xl font-bold text-[#f2f4f5] tracking-tight font-mono">
+              <h1 className="text-xl md:text-2xl font-bold text-[#f2f4f5] tracking-tight font-extended">
                 {profileData.handle}
               </h1>
               <Badge label="In Experience" size="XSmall" variant="Success" />
