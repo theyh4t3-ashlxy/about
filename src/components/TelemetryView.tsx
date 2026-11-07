@@ -44,13 +44,13 @@ export function TelemetryView() {
 
   return (
     <div className="flex flex-col gap-large">
-      {/* Bare metal section */}
+      {/* Environment section */}
       <div>
         <div className="mb-4">
           <h2 className="text-title-medium uppercase tracking-wider content-emphasis font-bold">
-            bare metal & firmware
+            environment & firmware
           </h2>
-          <p className="text-body-medium content-muted">telemetry queried via inxi -fxz</p>
+          <p className="text-body-medium content-muted">telemetry queried via inxi</p>
         </div>
 
         <div className="flex flex-col gap-small">
@@ -80,11 +80,11 @@ export function TelemetryView() {
         </div>
       </div>
 
-      {/* Compute & silicon section */}
+      {/* Processor & silicon section */}
       <div>
         <div className="mb-4">
           <h2 className="text-title-medium uppercase tracking-wider content-emphasis font-bold">
-            compute & silicon
+            processor & silicon
           </h2>
           <p className="text-body-medium content-muted">alder lake cores and dual hybrid gpus</p>
         </div>

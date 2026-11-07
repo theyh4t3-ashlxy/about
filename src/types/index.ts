@@ -1,5 +1,3 @@
-export type AccentColor = "blue" | "teal" | "green" | "yellow" | "orange" | "purple";
-
 export interface HardwareSpec {
   title: string;
   subtitle: string;

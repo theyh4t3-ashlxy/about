@@ -28,10 +28,10 @@ export function ProjectsView() {
     <div className="flex flex-col gap-medium">
       <div className="mb-2">
         <h2 className="text-title-medium uppercase tracking-wider content-emphasis font-bold">
-          git repos & payloads
+          public repositories
         </h2>
         <p className="text-body-medium content-muted">
-          published codebases (@theyh4t3-ashlxy)
+          codebases on github (@theyh4t3-ashlxy)
         </p>
       </div>
 

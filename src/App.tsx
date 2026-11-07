@@ -1,31 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent, useFoundationTheme } from "@rbx/foundation-ui";
 import { Header } from "./components/Header";
 import { ProfileHero } from "./components/ProfileHero";
 import { TelemetryView } from "./components/TelemetryView";
 import { ProjectsView } from "./components/ProjectsView";
 import { AnomaliesView } from "./components/AnomaliesView";
-import { profileData } from "./data/profile";
-import type { AccentColor } from "./types";
 
 export default function App() {
-  const [accent, setAccent] = useState<AccentColor>("blue");
-
   // Initialize official Roblox Foundation theme
   useFoundationTheme("dark", typeof document !== "undefined" ? document.documentElement : undefined);
-
-  useEffect(() => {
-    const hex = profileData.accentOptions.find((a) => a.id === accent)?.hex || "#3584e4";
-    document.documentElement.style.setProperty("--accent-color", hex);
-    document.body.setAttribute("data-accent", accent);
-  }, [accent]);
 
   return (
     <div className="dark-theme min-h-screen bg-surface-0 content-default flex flex-col font-sans selection:bg-system-emphasis/30">
       <Header />
 
       <main className="flex-1 max-w-5xl width-full mx-auto px-4 py-8 flex flex-col gap-large">
-        <ProfileHero currentAccent={accent} onAccentChange={setAccent} />
+        <ProfileHero />
 
         <div className="bg-surface-100 rounded-large border border-stroke-default p-6 shadow-sm">
           <Tabs defaultValue="telemetry" size="Medium" variant="Contained">
@@ -34,19 +24,19 @@ export default function App() {
                 value="telemetry"
                 className="px-4 py-2 rounded-small text-label-medium content-muted data-[state=active]:content-emphasis data-[state=active]:bg-surface-200 transition-all cursor-pointer"
               >
-                telemetry & silicon
+                system & hardware
               </TabsTrigger>
               <TabsTrigger
                 value="projects"
                 className="px-4 py-2 rounded-small text-label-medium content-muted data-[state=active]:content-emphasis data-[state=active]:bg-surface-200 transition-all cursor-pointer"
               >
-                repos & payloads
+                projects
               </TabsTrigger>
               <TabsTrigger
                 value="bugs"
                 className="px-4 py-2 rounded-small text-label-medium content-muted data-[state=active]:content-emphasis data-[state=active]:bg-surface-200 transition-all cursor-pointer flex items-center gap-xsmall"
               >
-                <span>anomalies & chaos</span>
+                <span>known issues</span>
                 <span className="px-1.5 py-0.5 rounded-full text-caption-small bg-system-warning/20 content-system-warning font-mono">
                   1 open
                 </span>

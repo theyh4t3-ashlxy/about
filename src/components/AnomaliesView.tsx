@@ -7,9 +7,9 @@ export function AnomaliesView() {
     <div className="flex flex-col gap-medium">
       <div className="mb-2">
         <h2 className="text-title-medium uppercase tracking-wider content-emphasis font-bold">
-          ledger of shame & anomalies
+          known issues & regressions
         </h2>
-        <p className="text-body-medium content-muted">runtime bugs and fixed regressions</p>
+        <p className="text-body-medium content-muted">runtime quirks and past bugfixes</p>
       </div>
 
       <div className="flex flex-col gap-small">
