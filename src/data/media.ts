@@ -9,8 +9,7 @@ export const mediaData: MediaCaptureItem[] = [
     src: "/media/hyprland-desktop.png",
     tag: "screenshot",
     resolution: "1920x1080 @ 60hz",
-    description: "active wayland desktop rendering on intel iris xe / thinkpad t16 gen 1. displays, workspaces, and window rules tuned for zero tearing. all hostnames, serials, and uefi hashes scrubbed for opsec.",
-    opsecScrubbed: true,
+    description: "active wayland desktop rendering on intel iris xe / thinkpad t16 gen 1. displays, workspaces, and window rules tuned for zero tearing.",
     timestamp: "2026-11-07 12:50:13",
   },
   {
@@ -22,7 +21,6 @@ export const mediaData: MediaCaptureItem[] = [
     tag: "recording",
     resolution: "1920x1080 · h264 mp4",
     description: "live screen capture demonstrating hyprland smooth window tiling, layer-shell quickshell panels, and instant workspace transitions on linux 7.3.1. zero dropped frames.",
-    opsecScrubbed: true,
     timestamp: "2026-11-07 14:16:25",
   },
   {
@@ -34,7 +32,6 @@ export const mediaData: MediaCaptureItem[] = [
     tag: "wallpaper",
     resolution: "2560x1440 · png",
     description: "custom desktop artwork rendered for delirium quickshell background canvas. high contrast dark theme matching roblox foundation surface-0 tokens.",
-    opsecScrubbed: true,
     timestamp: "2026-09-28",
   },
   {
@@ -46,7 +43,6 @@ export const mediaData: MediaCaptureItem[] = [
     tag: "artwork",
     resolution: "3840x2160 · jpg",
     description: "high-resolution atmospheric background used across psychological-os and wayland lockscreen environments.",
-    opsecScrubbed: true,
     timestamp: "2026-10-07",
   },
 ];

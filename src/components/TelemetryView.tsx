@@ -50,7 +50,7 @@ export function TelemetryView() {
           <h2 className="text-title-medium uppercase tracking-wider content-emphasis font-bold">
             desktop environment
           </h2>
-          <p className="text-body-medium content-muted">telemetry queried via inxi · opsec sanitized</p>
+          <p className="text-body-medium content-muted">telemetry queried via inxi</p>
         </div>
 
         <div className="flex flex-col gap-small">

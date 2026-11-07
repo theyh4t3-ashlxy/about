@@ -157,9 +157,6 @@ export function MediaView() {
                     size="Small"
                     variant={selectedItem.type === "video" ? "Emphasis" : "Standard"}
                   />
-                  {selectedItem.opsecScrubbed && (
-                    <Badge label="opsec scrubbed" size="Small" variant="Success" />
-                  )}
                 </div>
               </div>
 

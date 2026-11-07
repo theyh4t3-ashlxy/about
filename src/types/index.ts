@@ -35,7 +35,6 @@ export interface MediaCaptureItem {
   tag: string;
   resolution: string;
   description: string;
-  opsecScrubbed: boolean;
   timestamp: string;
 }
 
