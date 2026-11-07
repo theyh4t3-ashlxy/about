@@ -17,7 +17,7 @@ export function ProjectsView() {
         return "icon-regular-shield-check";
       case "fan-control":
         return "icon-regular-gear";
-      case "libadwaita-web":
+      case "about":
         return "icon-filled-studio";
       default:
         return "icon-regular-folder";

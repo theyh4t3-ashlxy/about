@@ -44,10 +44,10 @@ export const projectsData: ProjectItem[] = [
     badge: { label: "daemon", variant: "Standard" },
   },
   {
-    id: "libadwaita-web",
-    title: "theyh4t3-ashlxy / libadwaita-web",
+    id: "about",
+    title: "theyh4t3-ashlxy / about",
     subtitle: "roblox foundation web desktop interface with real nixos hardware telemetry.",
-    url: "https://github.com/theyh4t3-ashlxy/libadwaita-web",
+    url: "https://github.com/theyh4t3-ashlxy/about",
     badge: { label: "foundation", variant: "Emphasis" },
   },
   {
