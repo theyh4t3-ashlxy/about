@@ -13,8 +13,8 @@ export const projectsData: ProjectItem[] = [
     fullDescription: "an obsessive, bespoke desktop containment unit hand-carved by a 15-year-old who refused to use standard tools, declared holy war on curly braces, and needed a root daemon just to keep an alder lake thinkpad from thermal death at 400mhz. includes continuous bezier curves, instant keybinds, and zero .json files.",
     previewMedia: {
       type: "image",
-      src: "/media/hyprland-desktop.png",
-      caption: "quickshell qml desktop running on hyprland with custom widgets",
+      src: "/media/desktop.png",
+      caption: "quickshell desktop on hyprland with dolphin instance and fixed corners",
     },
   },
   {

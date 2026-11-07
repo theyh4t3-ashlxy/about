@@ -25,7 +25,7 @@ export const environmentSpecs: HardwareSpec[] = [
   },
   {
     title: "userland shell",
-    subtitle: "quickshell (qml) · zsh 5.9 · kitty terminal",
+    subtitle: "quickshell (qml) · zsh 5.9",
     badge: "shell",
     details: [
       { label: "desktop shell", value: "quickshell qml layer-shell" },

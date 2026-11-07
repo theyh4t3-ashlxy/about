@@ -29,6 +29,15 @@ export const anomaliesData: AnomalyItem[] = [
     postmortem: "popup window rendered before the wayland compositor reported display dimensions, leaving an invisible click interceptor. resolved by anchoring layout to the completed surface event.",
   },
   {
+    id: "wallpaper-corners",
+    title: "quickshell wallpaper corner clipping",
+    description: "fixed background canvas rendering with broken rounded corners and black border gaps.",
+    status: "resolved",
+    tag: "resolved",
+    affectedComponent: "quickshell/layer-shell",
+    postmortem: "wallpaper canvas was inheriting parent surface corner radius and margin constraints instead of pinning full-bleed across monitor outputs. resolved by setting explicit fullscreen geometry anchoring.",
+  },
+  {
     id: "smart-fridge",
     title: "embedded doom on smart fridge display",
     description: "compiled and tested a no-heap doom wad renderer on appliance screen framebuffer.",
