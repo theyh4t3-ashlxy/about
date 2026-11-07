@@ -9,7 +9,7 @@ import {
   Card,
   Icon,
 } from "@rbx/foundation-ui";
-import { bareMetalSpecs, siliconSpecs } from "../data/telemetry";
+import { environmentSpecs, siliconSpecs } from "../data/telemetry";
 
 export function TelemetryView() {
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
@@ -20,7 +20,7 @@ export function TelemetryView() {
     setTimeout(() => setCopiedKey(null), 1500);
   };
 
-  const getBareMetalIcon = (index: number) => {
+  const getEnvIcon = (index: number) => {
     switch (index) {
       case 0:
         return "icon-regular-code";
@@ -48,19 +48,19 @@ export function TelemetryView() {
       <div>
         <div className="mb-4">
           <h2 className="text-title-medium uppercase tracking-wider content-emphasis font-bold">
-            environment & firmware
+            desktop environment
           </h2>
-          <p className="text-body-medium content-muted">telemetry queried via inxi</p>
+          <p className="text-body-medium content-muted">telemetry queried via inxi · opsec sanitized</p>
         </div>
 
         <div className="flex flex-col gap-small">
-          {bareMetalSpecs.map((spec, i) => (
+          {environmentSpecs.map((spec, i) => (
             <Card
               key={i}
               variant="Standard"
               density="Compact"
               className="border border-stroke-default hover:border-stroke-emphasis transition-colors"
-              leading={<Icon name={getBareMetalIcon(i) as any} size="Medium" className="content-muted" />}
+              leading={<Icon name={getEnvIcon(i) as any} size="Medium" className="content-muted" />}
               title={<span className="text-title-small font-mono content-emphasis">{spec.title}</span>}
               description={<span className="text-body-medium font-mono content-default">{spec.subtitle}</span>}
               trailing={

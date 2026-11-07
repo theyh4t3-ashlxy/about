@@ -5,6 +5,7 @@ import { ProfileHero } from "./components/ProfileHero";
 import { TelemetryView } from "./components/TelemetryView";
 import { ProjectsView } from "./components/ProjectsView";
 import { AnomaliesView } from "./components/AnomaliesView";
+import { MediaView } from "./components/MediaView";
 
 export default function App() {
   // Initialize official Roblox Foundation theme
@@ -33,6 +34,12 @@ export default function App() {
                 projects
               </TabsTrigger>
               <TabsTrigger
+                value="media"
+                className="px-4 py-2 rounded-small text-label-medium content-muted data-[state=active]:content-emphasis data-[state=active]:bg-surface-200 transition-all cursor-pointer"
+              >
+                captures & media
+              </TabsTrigger>
+              <TabsTrigger
                 value="bugs"
                 className="px-4 py-2 rounded-small text-label-medium content-muted data-[state=active]:content-emphasis data-[state=active]:bg-surface-200 transition-all cursor-pointer flex items-center gap-xsmall"
               >
@@ -49,6 +56,10 @@ export default function App() {
 
             <TabsContent value="projects" className="outline-none focus:outline-none">
               <ProjectsView />
+            </TabsContent>
+
+            <TabsContent value="media" className="outline-none focus:outline-none">
+              <MediaView />
             </TabsContent>
 
             <TabsContent value="bugs" className="outline-none focus:outline-none">

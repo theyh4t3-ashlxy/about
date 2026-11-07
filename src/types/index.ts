@@ -15,6 +15,28 @@ export interface ProjectItem {
     variant: "Standard" | "Emphasis" | "Success" | "Warning" | "Alert" | "Neutral";
   };
   localOnly?: boolean;
+  techStack?: string[];
+  quote?: string;
+  commandSnippet?: string;
+  fullDescription?: string;
+  previewMedia?: {
+    type: "image" | "video";
+    src: string;
+    caption: string;
+  };
+}
+
+export interface MediaCaptureItem {
+  id: string;
+  title: string;
+  subtitle: string;
+  type: "image" | "video";
+  src: string;
+  tag: string;
+  resolution: string;
+  description: string;
+  opsecScrubbed: boolean;
+  timestamp: string;
 }
 
 export interface AnomalyItem {
@@ -23,4 +45,6 @@ export interface AnomalyItem {
   description: string;
   status: "resolved" | "open" | "pushed";
   tag: string;
+  postmortem?: string;
+  affectedComponent?: string;
 }
