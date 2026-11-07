@@ -159,23 +159,25 @@ export function ProjectsView() {
 
             <DialogBody className="p-6 flex flex-col gap-medium max-h-[70vh] overflow-y-auto">
               {selectedProject.previewMedia && (
-                <div className="overflow-hidden rounded-medium border border-stroke-default bg-surface-0 shadow-sm">
-                  {selectedProject.previewMedia.type === "video" ? (
-                    <video
-                      src={selectedProject.previewMedia.src}
-                      controls
-                      className="w-full max-h-72 object-cover bg-black"
-                    />
-                  ) : (
-                    <img
-                      src={selectedProject.previewMedia.src}
-                      alt={selectedProject.previewMedia.caption}
-                      className="w-full max-h-72 object-cover"
-                    />
-                  )}
-                  <div className="px-3.5 py-2 bg-surface-200 border-t border-stroke-default flex items-center justify-between text-caption-large font-mono content-muted">
+                <div className="overflow-hidden rounded-medium border border-stroke-default bg-surface-0 shadow-sm flex flex-col items-center">
+                  <div className="w-full bg-surface-200/60 p-3 flex items-center justify-center">
+                    {selectedProject.previewMedia.type === "video" ? (
+                      <video
+                        src={selectedProject.previewMedia.src}
+                        controls
+                        className="max-h-60 max-w-full rounded-small object-contain shadow-sm bg-black"
+                      />
+                    ) : (
+                      <img
+                        src={selectedProject.previewMedia.src}
+                        alt={selectedProject.previewMedia.caption}
+                        className="max-h-60 max-w-full rounded-small object-contain shadow-sm"
+                      />
+                    )}
+                  </div>
+                  <div className="w-full px-3.5 py-2 bg-surface-100 border-t border-stroke-default flex items-center justify-between text-caption-large font-mono content-muted">
                     <span>{selectedProject.previewMedia.caption}</span>
-                    <Badge label="media capture" size="Small" variant="Standard" />
+                    <Badge label="preview" size="Small" variant="Standard" />
                   </div>
                 </div>
               )}

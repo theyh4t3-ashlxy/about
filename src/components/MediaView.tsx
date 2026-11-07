@@ -41,7 +41,7 @@ export function MediaView() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-medium">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-medium">
         {mediaData.map((item) => (
           <Card
             key={item.id}
@@ -68,9 +68,9 @@ export function MediaView() {
             }
           >
             {/* Thumbnail preview */}
-            <div className="my-3 relative rounded-medium overflow-hidden border border-stroke-default bg-surface-0 aspect-video flex items-center justify-center">
+            <div className="my-3 relative rounded-medium overflow-hidden border border-stroke-default bg-surface-200/50 h-44 flex items-center justify-center">
               {item.type === "video" ? (
-                <div className="w-full h-full relative flex items-center justify-center bg-surface-200">
+                <div className="w-full h-full relative flex items-center justify-center">
                   <video
                     src={item.src}
                     muted
@@ -78,8 +78,8 @@ export function MediaView() {
                     className="w-full h-full object-cover opacity-80"
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-colors">
-                    <div className="p-3 rounded-full bg-surface-100/90 text-content-emphasis shadow-lg group-hover:scale-110 transition-transform">
-                      <Icon name="icon-regular-circle-play" size="Large" />
+                    <div className="p-2.5 rounded-full bg-surface-100/90 text-content-emphasis shadow-lg group-hover:scale-110 transition-transform">
+                      <Icon name="icon-regular-circle-play" size="Medium" />
                     </div>
                   </div>
                 </div>
@@ -104,7 +104,7 @@ export function MediaView() {
                   size="Small"
                   onClick={() => setSelectedItem(item)}
                 >
-                  {item.type === "video" ? "play video" : "view full"}
+                  {item.type === "video" ? "play" : "view"}
                 </Button>
               </div>
             </div>
@@ -122,20 +122,20 @@ export function MediaView() {
           open={!!selectedItem}
           onOpenChange={(open) => !open && setSelectedItem(null)}
         >
-          <DialogContent className="max-w-3xl bg-surface-100 border border-stroke-default rounded-xl overflow-hidden shadow-2xl">
-            <DialogHeroMedia className="bg-surface-0 border-b border-stroke-default p-0 flex flex-col items-center justify-center overflow-hidden">
+          <DialogContent className="max-w-2xl bg-surface-100 border border-stroke-default rounded-xl overflow-hidden shadow-2xl">
+            <DialogHeroMedia className="bg-surface-200/50 border-b border-stroke-default p-4 flex items-center justify-center overflow-hidden">
               {selectedItem.type === "video" ? (
                 <video
                   src={selectedItem.src}
                   controls
                   autoPlay
-                  className="w-full max-h-[60vh] object-contain bg-black"
+                  className="max-h-[50vh] max-w-full rounded-small object-contain shadow-md bg-black"
                 />
               ) : (
                 <img
                   src={selectedItem.src}
                   alt={selectedItem.title}
-                  className="w-full max-h-[60vh] object-contain bg-surface-0"
+                  className="max-h-[50vh] max-w-full rounded-small object-contain shadow-md"
                 />
               )}
             </DialogHeroMedia>

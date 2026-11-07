@@ -57,7 +57,7 @@ export function AnomaliesView() {
                 />
               }
               title={
-                <span className="text-title-small font-mono content-emphasis group-hover:underline">
+                <span className="text-title-small font-medium content-emphasis group-hover:underline">
                   {item.title}
                 </span>
               }
@@ -112,7 +112,7 @@ export function AnomaliesView() {
                   size="Large"
                 />
                 <div>
-                  <span className="text-title-medium font-mono content-emphasis">
+                  <span className="text-title-medium font-medium content-emphasis">
                     {selectedAnomaly.title}
                   </span>
                   <p className="text-caption-large font-mono content-muted">
