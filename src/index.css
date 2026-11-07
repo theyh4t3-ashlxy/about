@@ -1,5 +1,13 @@
 @import "../node_modules/@rbx/foundation-tailwind/dist/css/index.css";
 
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+}
+
 @font-face {
   font-family: 'Builder Sans';
   src: url('/fonts/BuilderSans-Regular.otf') format('opentype');

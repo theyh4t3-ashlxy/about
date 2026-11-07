@@ -15,7 +15,7 @@ export default function App() {
     <div className="dark-theme min-h-screen bg-surface-0 content-default flex flex-col font-sans selection:bg-system-emphasis/30">
       <Header />
 
-      <main className="flex-1 max-w-5xl width-full mx-auto px-4 py-8 flex flex-col gap-large">
+      <main className="flex-1 max-w-5xl w-full mx-auto px-4 py-8 flex flex-col gap-large">
         <ProfileHero />
 
         <div className="bg-surface-100 rounded-large border border-stroke-default p-6 shadow-sm">
@@ -69,7 +69,7 @@ export default function App() {
         </div>
       </main>
 
-      <footer className="width-full border-t border-stroke-default bg-surface-100 py-6 text-align-center text-caption-large font-mono content-muted">
+      <footer className="w-full border-t border-stroke-default bg-surface-100 py-6 text-center text-caption-large font-mono content-muted">
         thinkpad t16 · roblox foundation-web · nixos 26.11 (zokor)
       </footer>
     </div>

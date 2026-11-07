@@ -10,6 +10,7 @@ export default {
   presets: [foundationPreset],
   darkMode: "class",
   corePlugins: {
+    boxSizing: true,
     gridTemplateColumns: true,
     gridTemplateRows: true,
     gridColumn: true,
