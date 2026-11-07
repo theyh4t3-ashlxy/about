@@ -41,10 +41,10 @@ export function Header() {
 
         <div className="hidden sm:flex items-center gap-small font-mono">
           <span className="bg-surface-0 px-2.5 py-1 rounded-small border border-stroke-default content-default">
-            79% juice
+            38% juice
           </span>
           <span className="bg-surface-0 px-2.5 py-1 rounded-small border border-stroke-default content-default">
-            64°c
+            52°c
           </span>
         </div>
       </div>

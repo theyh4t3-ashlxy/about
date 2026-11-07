@@ -69,7 +69,7 @@ export default function App() {
       </main>
 
       <footer className="width-full border-t border-stroke-default bg-surface-100 py-6 text-align-center text-caption-large font-mono content-muted">
-        thinkpad t16 · roblox foundation-web · arch linux (x86_64)
+        thinkpad t16 · roblox foundation-web · nixos 26.11 (zokor)
       </footer>
     </div>
   );

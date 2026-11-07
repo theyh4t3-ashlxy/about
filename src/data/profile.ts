@@ -5,9 +5,9 @@ export const profileData = {
   realName: "Ashley",
   avatarInitials: "AS",
   deviceTag: "ThinkPad T16 Gen 1 (21BWS23200)",
-  osTag: "Arch Linux (x86_64)",
+  osTag: "NixOS 26.11 (Zokor) x86_64",
   location: "tokyo.r0 / neurodesk",
-  bio: "chronically online developer compiling rust, tuning wayland hyprland setups, and reverse engineering luau scripts.",
+  bio: "chronically online developer compiling rust, managing declarative nix flakes, and reverse engineering roblox client packages.",
   socials: {
     github: "https://github.com/theyh4t3-ashlxy",
   },
