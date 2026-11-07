@@ -47,10 +47,10 @@ export function TelemetryView() {
       {/* Environment section */}
       <div>
         <div className="mb-4">
-          <h2 className="text-title-medium uppercase tracking-wider content-emphasis font-bold">
+          <h2 className="text-title-medium content-emphasis font-bold lowercase">
             desktop environment
           </h2>
-          <p className="text-body-medium content-muted">telemetry queried via inxi</p>
+          <p className="text-body-medium content-muted lowercase">telemetry queried via inxi</p>
         </div>
 
         <div className="flex flex-col gap-small">
@@ -83,10 +83,10 @@ export function TelemetryView() {
       {/* Processor & silicon section */}
       <div>
         <div className="mb-4">
-          <h2 className="text-title-medium uppercase tracking-wider content-emphasis font-bold">
+          <h2 className="text-title-medium content-emphasis font-bold lowercase">
             processor & silicon
           </h2>
-          <p className="text-body-medium content-muted">alder lake cores and dual hybrid gpus</p>
+          <p className="text-body-medium content-muted lowercase">alder lake cores and dual hybrid gpus</p>
         </div>
 
         <Card variant="Standard" density="Default" className="border border-stroke-default p-0 overflow-hidden">
@@ -94,7 +94,7 @@ export function TelemetryView() {
             {siliconSpecs.map((spec, i) => (
               <AccordionItem key={i} defaultOpen={i === 0}>
                 <AccordionItemTrigger className="py-3">
-                  <div className="flex items-center justify-between width-full pr-4">
+                  <div className="flex items-center justify-between w-full pr-4">
                     <div className="flex items-center gap-small min-w-0">
                       <Icon name={getSiliconIcon(i) as any} size="Medium" className="content-emphasis" />
                       <div className="flex flex-col text-align-x-start min-w-0">

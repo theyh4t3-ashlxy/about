@@ -30,7 +30,6 @@ export const environmentSpecs: HardwareSpec[] = [
     details: [
       { label: "desktop shell", value: "quickshell qml layer-shell" },
       { label: "shell", value: "zsh 5.9 (pure prompt)" },
-      { label: "terminal", value: "kitty (gpu accelerated)" },
       { label: "editor", value: "neovim (custom lua config)" },
     ],
   },

@@ -9,7 +9,7 @@ export const mediaData: MediaCaptureItem[] = [
     src: "/media/desktop.png",
     tag: "screenshot",
     resolution: "1920x1080 @ 60hz",
-    description: "active desktop on thinkpad t16 gen 1 with quickshell bar, dolphin open in media folder, and full-bleed anime wallpaper with fixed corner geometry.",
+    description: "active desktop on thinkpad t16 gen 1 with quickshell bar, dolphin open in media folder, and full-bleed wallpaper.",
     timestamp: "2026-11-07 16:06",
   },
   {
@@ -36,13 +36,13 @@ export const mediaData: MediaCaptureItem[] = [
   },
   {
     id: "anime-wallpaper",
-    title: "delirium character render",
-    subtitle: "high-contrast anime character wallpaper with glowing purple eyes",
+    title: "brain_shell anime artwork",
+    subtitle: "white-haired girl in oversized knit sweater in sunlight",
     type: "image",
     src: "/media/anime.png",
     tag: "wallpaper",
     resolution: "1672x941 · png",
-    description: "custom character wallpaper asset used on the delirium quickshell desktop.",
+    description: "original desktop artwork from brain_shell. white-haired girl with amber eyes in an oversized sweater under sunlight.",
     timestamp: "2026-11-07",
   },
   {

@@ -29,10 +29,10 @@ export function AnomaliesView() {
   return (
     <div className="flex flex-col gap-medium">
       <div className="mb-2">
-        <h2 className="text-title-medium uppercase tracking-wider content-emphasis font-bold">
+        <h2 className="text-title-medium content-emphasis font-bold lowercase">
           known issues
         </h2>
-        <p className="text-body-medium content-muted">
+        <p className="text-body-medium content-muted lowercase">
           bug tracker and desktop quirks
         </p>
       </div>
@@ -98,7 +98,7 @@ export function AnomaliesView() {
           onOpenChange={(open) => !open && setSelectedAnomaly(null)}
         >
           <DialogContent className="max-w-xl bg-surface-100 border border-stroke-default rounded-xl overflow-hidden shadow-2xl">
-            <DialogHeroMedia className="bg-surface-0 border-b border-stroke-default px-6 py-4 flex items-center justify-between">
+            <DialogHeroMedia className="bg-surface-0 border-b border-stroke-default px-6 py-4 flex items-center pr-16">
               <div className="flex items-center gap-small">
                 <StatusIndicator
                   variant="Dot"
@@ -120,22 +120,11 @@ export function AnomaliesView() {
                   </p>
                 </div>
               </div>
-              <Badge
-                label={selectedAnomaly.tag}
-                size="Small"
-                variant={
-                  selectedAnomaly.status === "resolved"
-                    ? "Success"
-                    : selectedAnomaly.status === "pushed"
-                    ? "Emphasis"
-                    : "Warning"
-                }
-              />
             </DialogHeroMedia>
 
             <DialogBody className="p-6 flex flex-col gap-medium">
               <div className="flex flex-col gap-xxsmall">
-                <DialogTitle className="text-heading-small content-emphasis font-extended">
+                <DialogTitle className="text-heading-small content-emphasis font-extended lowercase">
                   overview
                 </DialogTitle>
                 <p className="text-body-medium content-default leading-relaxed">
@@ -145,7 +134,7 @@ export function AnomaliesView() {
 
               {selectedAnomaly.affectedComponent && (
                 <div className="p-3.5 rounded-medium bg-surface-0 border border-stroke-default flex flex-col gap-xxsmall">
-                  <span className="text-label-small uppercase tracking-wider content-muted font-bold font-mono">
+                  <span className="text-label-small content-muted font-semibold lowercase">
                     affected component
                   </span>
                   <span className="text-body-medium font-mono content-emphasis">
@@ -156,7 +145,7 @@ export function AnomaliesView() {
 
               {selectedAnomaly.postmortem && (
                 <div className="p-3.5 rounded-medium bg-surface-0 border-l-4 border-system-emphasis border-stroke-default">
-                  <span className="text-label-small uppercase tracking-wider content-muted font-bold font-mono block mb-1">
+                  <span className="text-label-small content-muted font-semibold lowercase block mb-1">
                     root cause & fix
                   </span>
                   <p className="text-body-medium content-default font-mono leading-relaxed text-sm">
@@ -183,8 +172,8 @@ export function AnomaliesView() {
                 onClick={() => handleCopyTag(selectedAnomaly.tag)}
                 className="flex items-center gap-xsmall"
               >
-                <Icon name="icon-regular-code" size="Small" />
                 <span>{copiedTag === selectedAnomaly.tag ? "copied" : "copy tag"}</span>
+                <Icon name="icon-regular-code" size="Small" />
               </Button>
             </DialogFooter>
           </DialogContent>

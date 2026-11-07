@@ -24,7 +24,7 @@ export function ProfileHero() {
               <h1 className="text-heading-medium font-extended content-emphasis tracking-tight truncate">
                 {profileData.handle}
               </h1>
-              <Badge label="In Experience" size="Small" variant="Success" />
+              <Badge label="in experience" size="Small" variant="Success" />
             </div>
 
             <div className="flex flex-wrap items-center gap-xsmall text-body-medium content-muted pt-0.5">
@@ -54,7 +54,6 @@ export function ProfileHero() {
               rel="noreferrer"
               className="flex items-center gap-xsmall"
             >
-              <Icon name="icon-regular-code" size="Small" />
               <span>github</span>
               <Icon name="icon-regular-arrow-up-right-from-square" size="XSmall" />
             </a>

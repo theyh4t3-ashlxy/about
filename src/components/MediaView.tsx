@@ -33,10 +33,10 @@ export function MediaView() {
   return (
     <div className="flex flex-col gap-medium">
       <div className="mb-2">
-        <h2 className="text-title-medium uppercase tracking-wider content-emphasis font-bold">
+        <h2 className="text-title-medium content-emphasis font-bold lowercase">
           captures
         </h2>
-        <p className="text-body-medium content-muted">
+        <p className="text-body-medium content-muted lowercase">
           desktop screenshots, compositor recordings, and wallpapers
         </p>
       </div>
@@ -68,7 +68,7 @@ export function MediaView() {
             }
           >
             {/* Thumbnail preview */}
-            <div className="my-3 relative rounded-medium overflow-hidden border border-stroke-default bg-surface-200/50 h-44 flex items-center justify-center">
+            <div className="my-3 relative rounded-medium overflow-hidden border border-stroke-default bg-surface-200/50 aspect-video w-full flex items-center justify-center">
               {item.type === "video" ? (
                 <div className="w-full h-full relative flex items-center justify-center">
                   <video
@@ -200,8 +200,8 @@ export function MediaView() {
                   rel="noreferrer"
                   className="flex items-center gap-xsmall"
                 >
-                  <Icon name="icon-regular-arrow-up-right-from-square" size="Small" />
                   <span>open raw asset</span>
+                  <Icon name="icon-regular-arrow-up-right-from-square" size="Small" />
                 </a>
               </Button>
             </DialogFooter>

@@ -49,10 +49,10 @@ export function ProjectsView() {
   return (
     <div className="flex flex-col gap-medium">
       <div className="mb-2">
-        <h2 className="text-title-medium uppercase tracking-wider content-emphasis font-bold">
+        <h2 className="text-title-medium content-emphasis font-bold lowercase">
           projects
         </h2>
-        <p className="text-body-medium content-muted">
+        <p className="text-body-medium content-muted lowercase">
           repositories on github (@theyh4t3-ashlxy)
         </p>
       </div>
@@ -134,7 +134,7 @@ export function ProjectsView() {
           onOpenChange={(open) => !open && setSelectedProject(null)}
         >
           <DialogContent className="max-w-2xl bg-surface-100 border border-stroke-default rounded-xl overflow-hidden shadow-2xl">
-            <DialogHeroMedia className="bg-surface-0 border-b border-stroke-default px-6 py-4 flex items-center justify-between">
+            <DialogHeroMedia className="bg-surface-0 border-b border-stroke-default px-6 py-4 flex items-center pr-16">
               <div className="flex items-center gap-small">
                 <div className="p-2 rounded-small bg-surface-200">
                   <Icon name={getProjectIcon(selectedProject.id) as any} size="Large" className="content-emphasis" />
@@ -148,13 +148,6 @@ export function ProjectsView() {
                   </p>
                 </div>
               </div>
-              {selectedProject.badge && (
-                <Badge
-                  label={selectedProject.badge.label}
-                  size="Small"
-                  variant={selectedProject.badge.variant}
-                />
-              )}
             </DialogHeroMedia>
 
             <DialogBody className="p-6 flex flex-col gap-medium max-h-[70vh] overflow-y-auto">
@@ -176,14 +169,14 @@ export function ProjectsView() {
                     )}
                   </div>
                   <div className="w-full px-3.5 py-2 bg-surface-100 border-t border-stroke-default flex items-center justify-between text-caption-large font-mono content-muted">
-                    <span>{selectedProject.previewMedia.caption}</span>
+                    <span className="truncate mr-2">{selectedProject.previewMedia.caption}</span>
                     <Badge label="preview" size="Small" variant="Standard" />
                   </div>
                 </div>
               )}
 
               <div className="flex flex-col gap-xxsmall">
-                <DialogTitle className="text-heading-small content-emphasis font-extended">
+                <DialogTitle className="text-heading-small content-emphasis font-extended lowercase">
                   overview
                 </DialogTitle>
                 <p className="text-body-medium content-default leading-relaxed">
@@ -201,7 +194,7 @@ export function ProjectsView() {
 
               {selectedProject.techStack && (
                 <div className="flex flex-col gap-xsmall">
-                  <span className="text-label-small uppercase tracking-wider content-muted font-bold">
+                  <span className="text-label-small content-muted font-semibold lowercase">
                     tech stack
                   </span>
                   <div className="flex flex-wrap gap-xsmall">
@@ -214,7 +207,7 @@ export function ProjectsView() {
 
               {selectedProject.commandSnippet && (
                 <div className="flex flex-col gap-xsmall">
-                  <span className="text-label-small uppercase tracking-wider content-muted font-bold">
+                  <span className="text-label-small content-muted font-semibold lowercase">
                     run command
                   </span>
                   <div className="flex items-center justify-between bg-surface-0 border border-stroke-default px-3.5 py-2.5 rounded-medium font-mono text-caption-large">
@@ -225,9 +218,10 @@ export function ProjectsView() {
                       variant="Standard"
                       size="Small"
                       onClick={() => handleCopySnippet(selectedProject.commandSnippet!)}
-                      className="shrink-0"
+                      className="shrink-0 flex items-center gap-xsmall"
                     >
-                      {copied ? "copied" : "copy"}
+                      <span>{copied ? "copied" : "copy"}</span>
+                      <Icon name="icon-regular-code" size="XSmall" />
                     </Button>
                   </div>
                 </div>
