@@ -34,10 +34,10 @@ export function MediaView() {
     <div className="flex flex-col gap-medium">
       <div className="mb-2">
         <h2 className="text-title-medium uppercase tracking-wider content-emphasis font-bold">
-          captures & recordings
+          captures
         </h2>
         <p className="text-body-medium content-muted">
-          wayland desktop screenshots, motion captures, and artwork · click for foundation popup
+          desktop screenshots, compositor recordings, and wallpapers
         </p>
       </div>
 

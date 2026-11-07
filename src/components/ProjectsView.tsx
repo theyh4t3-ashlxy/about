@@ -50,10 +50,10 @@ export function ProjectsView() {
     <div className="flex flex-col gap-medium">
       <div className="mb-2">
         <h2 className="text-title-medium uppercase tracking-wider content-emphasis font-bold">
-          public repositories
+          projects
         </h2>
         <p className="text-body-medium content-muted">
-          codebases on github (@theyh4t3-ashlxy) · click card for details & commands
+          repositories on github (@theyh4t3-ashlxy)
         </p>
       </div>
 
@@ -88,7 +88,7 @@ export function ProjectsView() {
           >
             <div className="pt-medium mt-auto flex items-center justify-between border-t border-stroke-default/60">
               <span className="text-caption-large font-mono content-subtle">
-                {project.localOnly ? "offline payload" : "click for preview"}
+                {project.localOnly ? "local repository" : "github.com"}
               </span>
 
               <div className="flex items-center gap-xsmall" onClick={(e) => e.stopPropagation()}>
@@ -115,7 +115,7 @@ export function ProjectsView() {
                   size="Small"
                   onClick={() => setSelectedProject(project)}
                 >
-                  inspect
+                  view
                 </Button>
               </div>
             </div>
@@ -144,7 +144,7 @@ export function ProjectsView() {
                     {selectedProject.title}
                   </span>
                   <p className="text-caption-large font-mono content-muted">
-                    {selectedProject.localOnly ? "local sandbox payload" : "public github repository"}
+                    {selectedProject.localOnly ? "local repository" : "github repository"}
                   </p>
                 </div>
               </div>
@@ -184,7 +184,7 @@ export function ProjectsView() {
 
               <div className="flex flex-col gap-xxsmall">
                 <DialogTitle className="text-heading-small content-emphasis font-extended">
-                  overview & doctrine
+                  overview
                 </DialogTitle>
                 <p className="text-body-medium content-default leading-relaxed">
                   {selectedProject.fullDescription || selectedProject.subtitle}
@@ -202,7 +202,7 @@ export function ProjectsView() {
               {selectedProject.techStack && (
                 <div className="flex flex-col gap-xsmall">
                   <span className="text-label-small uppercase tracking-wider content-muted font-bold">
-                    tech stack & components
+                    tech stack
                   </span>
                   <div className="flex flex-wrap gap-xsmall">
                     {selectedProject.techStack.map((tech, idx) => (
@@ -215,7 +215,7 @@ export function ProjectsView() {
               {selectedProject.commandSnippet && (
                 <div className="flex flex-col gap-xsmall">
                   <span className="text-label-small uppercase tracking-wider content-muted font-bold">
-                    terminal execution snippet
+                    run command
                   </span>
                   <div className="flex items-center justify-between bg-surface-0 border border-stroke-default px-3.5 py-2.5 rounded-medium font-mono text-caption-large">
                     <code className="content-emphasis select-all break-all mr-3">

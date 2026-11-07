@@ -30,10 +30,10 @@ export function AnomaliesView() {
     <div className="flex flex-col gap-medium">
       <div className="mb-2">
         <h2 className="text-title-medium uppercase tracking-wider content-emphasis font-bold">
-          known issues & regressions
+          known issues
         </h2>
         <p className="text-body-medium content-muted">
-          runtime quirks, crash logs, and postmortems · click card for incident review
+          bug tracker and desktop quirks
         </p>
       </div>
 
@@ -78,7 +78,7 @@ export function AnomaliesView() {
                     size="Small"
                     onClick={() => setSelectedAnomaly(item)}
                   >
-                    review
+                    view
                   </Button>
                 </div>
               }
@@ -136,7 +136,7 @@ export function AnomaliesView() {
             <DialogBody className="p-6 flex flex-col gap-medium">
               <div className="flex flex-col gap-xxsmall">
                 <DialogTitle className="text-heading-small content-emphasis font-extended">
-                  incident postmortem
+                  overview
                 </DialogTitle>
                 <p className="text-body-medium content-default leading-relaxed">
                   {selectedAnomaly.description}
@@ -157,7 +157,7 @@ export function AnomaliesView() {
               {selectedAnomaly.postmortem && (
                 <div className="p-3.5 rounded-medium bg-surface-0 border-l-4 border-system-emphasis border-stroke-default">
                   <span className="text-label-small uppercase tracking-wider content-muted font-bold font-mono block mb-1">
-                    root cause & resolution
+                    root cause & fix
                   </span>
                   <p className="text-body-medium content-default font-mono leading-relaxed text-sm">
                     {selectedAnomaly.postmortem}
@@ -174,7 +174,7 @@ export function AnomaliesView() {
                 size="Medium"
                 onClick={() => setSelectedAnomaly(null)}
               >
-                dismiss
+                close
               </Button>
 
               <Button

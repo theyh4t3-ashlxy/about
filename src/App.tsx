@@ -37,7 +37,7 @@ export default function App() {
                 value="media"
                 className="px-4 py-2 rounded-small text-label-medium content-muted data-[state=active]:content-emphasis data-[state=active]:bg-surface-200 transition-all cursor-pointer"
               >
-                captures & media
+                captures
               </TabsTrigger>
               <TabsTrigger
                 value="bugs"
@@ -70,7 +70,7 @@ export default function App() {
       </main>
 
       <footer className="w-full border-t border-stroke-default bg-surface-100 py-6 text-center text-caption-large font-mono content-muted">
-        thinkpad t16 · roblox foundation-web · nixos 26.11 (zokor)
+        thinkpad t16 · nixos 26.11
       </footer>
     </div>
   );

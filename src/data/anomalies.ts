@@ -38,12 +38,12 @@ export const anomaliesData: AnomalyItem[] = [
     postmortem: "compiled a no-std doom wad parser and direct framebuffer blitter targeting low-power embedded display controllers. maintains a stable 35 fps render loop with zero memory leaks.",
   },
   {
-    id: "caffeine-sleep",
-    title: "late-night debugging cycles",
-    description: "compiling wayland configurations past 4 am leading to typos and diminishing cognitive speed.",
+    id: "hybrid-suspend",
+    title: "discrete gpu power draw on suspend",
+    description: "nouveau kernel driver occasionally keeps geforce mx550 awake during s3 suspend.",
     status: "open",
     tag: "open",
-    affectedComponent: "sleep schedule",
-    postmortem: "debugging kernel parameters and declarative flake revisions until dawn degrades velocity. recommended resolution: step away from the terminal and get actual sleep.",
+    affectedComponent: "nouveau / udev",
+    postmortem: "runtime power management intermittently fails to transition the tu117m chip into d3cold state during system sleep, causing elevated battery drain. tracking udev rule fix.",
   },
 ];

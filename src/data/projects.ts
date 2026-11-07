@@ -53,17 +53,17 @@ export const projectsData: ProjectItem[] = [
   {
     id: "about",
     title: "theyh4t3-ashlxy / about",
-    subtitle: "roblox foundation web desktop interface with real nixos hardware telemetry.",
+    subtitle: "personal portfolio interface built with roblox foundation web components.",
     url: "https://github.com/theyh4t3-ashlxy/about",
     badge: { label: "foundation", variant: "Emphasis" },
     techStack: ["React 19", "@rbx/foundation-ui", "@rbx/foundation-tailwind", "TypeScript", "Vite"],
-    quote: "nuked three static libadwaita files for a full roblox foundation web architecture with radix ui primitives and real client builder fonts.",
+    quote: "portfolio rewrite using foundation-web components and nixos hardware telemetry.",
     commandSnippet: "git clone https://github.com/theyh4t3-ashlxy/about.git && pnpm i && pnpm dev",
-    fullDescription: "modular personal desktop interface reconstructed with 1:1 roblox foundation tokens, official builder sans and builder mono fonts extracted from client storage, and native radix dialog overlays.",
+    fullDescription: "personal site built with react 19, tailwind css, and roblox foundation web primitives.",
     previewMedia: {
       type: "image",
       src: "/media/wallpaper-brain-shell.png",
-      caption: "foundation-web styling with official builder fonts and radix dialogs",
+      caption: "foundation-web components and builder typography",
     },
   },
   {
