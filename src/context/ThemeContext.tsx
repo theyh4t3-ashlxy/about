@@ -23,7 +23,7 @@ interface ThemeContextType {
   avatarId: string;
   avatarSrc?: string;
   avatarInitials: string;
-  setAvatar: (id: string, customSrc?: string) => void;
+  setAvatar: (id: string) => void;
   isAvatarDialogOpen: boolean;
   setIsAvatarDialogOpen: (open: boolean) => void;
 }
@@ -82,33 +82,32 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [isCustomColorOpen, setIsCustomColorOpen] = useState(false);
   const [isAvatarDialogOpen, setIsAvatarDialogOpen] = useState(false);
 
-  const [avatarState, setAvatarState] = useState<{ id: string; customSrc?: string }>(() => {
+  const [avatarState, setAvatarState] = useState<{ id: string }>(() => {
     try {
       const saved = localStorage.getItem(AVATAR_STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (parsed.id) return parsed;
+        if (parsed.id && avatarPresets.some((a) => a.id === parsed.id)) {
+          return { id: parsed.id };
+        }
       }
     } catch {}
-    return { id: "google-1" };
+    return { id: "hiashley" };
   });
 
   const activeAvatarPreset =
     avatarPresets.find((a) => a.id === avatarState.id) || avatarPresets[0];
 
-  const avatarId = avatarState.id;
-  const avatarSrc =
-    avatarState.id === "custom"
-      ? avatarState.customSrc
-      : activeAvatarPreset?.src;
-  const avatarInitials = activeAvatarPreset?.initials || "AS";
+  const avatarId = activeAvatarPreset.id;
+  const avatarSrc = activeAvatarPreset.src;
+  const avatarInitials = activeAvatarPreset.initials || "AS";
 
-  const setAvatar = (id: string, customSrc?: string) => {
-    setAvatarState({ id, customSrc });
+  const setAvatar = (id: string) => {
+    setAvatarState({ id });
     try {
       localStorage.setItem(
         AVATAR_STORAGE_KEY,
-        JSON.stringify({ id, customSrc })
+        JSON.stringify({ id })
       );
     } catch {}
   };

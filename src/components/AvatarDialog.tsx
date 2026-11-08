@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Dialog,
   DialogContent,
@@ -13,26 +13,10 @@ import { avatarPresets } from "../data/avatars";
 export function AvatarDialog() {
   const {
     avatarId,
-    avatarSrc,
     setAvatar,
     isAvatarDialogOpen,
     setIsAvatarDialogOpen,
   } = useTheme();
-
-  const [customInput, setCustomInput] = useState("");
-  const [showCustomInput, setShowCustomInput] = useState(false);
-
-  const handleSelectPreset = (id: string) => {
-    setAvatar(id);
-  };
-
-  const handleApplyCustom = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!customInput.trim()) return;
-    setAvatar("custom", customInput.trim());
-    setCustomInput("");
-    setShowCustomInput(false);
-  };
 
   return (
     <Dialog
@@ -50,10 +34,10 @@ export function AvatarDialog() {
           {/* Header */}
           <div className="flex flex-col gap-xxsmall">
             <DialogTitle className="text-heading-small margin-none content-emphasis lowercase font-extended">
-              switch avatar
+              which ashley do you want?
             </DialogTitle>
             <p className="text-body-small content-muted margin-none">
-              select your active profile picture or paste a custom asset url.
+              select your active mood for the profile and status bar.
             </p>
           </div>
 
@@ -66,7 +50,7 @@ export function AvatarDialog() {
                 <button
                   key={preset.id}
                   type="button"
-                  onClick={() => handleSelectPreset(preset.id)}
+                  onClick={() => setAvatar(preset.id)}
                   className={`foundation-web-button relative clip group/interactable focus-visible:outline-focus cursor-pointer flex items-center justify-between width-full padding-medium radius-medium stroke-standard text-left transition-all ${
                     isSelected
                       ? "bg-surface-200 stroke-emphasis"
@@ -86,7 +70,7 @@ export function AvatarDialog() {
                       size="Medium"
                       status="InExperience"
                       alt={preset.name}
-                      className="shrink-0"
+                      className="shrink-0 ring-1 ring-stroke-default"
                     />
 
                     <div className="flex flex-col min-width-0">
@@ -111,54 +95,6 @@ export function AvatarDialog() {
                 </button>
               );
             })}
-          </div>
-
-          {/* Custom Avatar Option */}
-          <div className="bg-shift-100 padding-medium radius-medium flex flex-col gap-small">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-small">
-                <Icon name="icon-regular-chain-link" size="Small" className="content-muted" />
-                <span className="text-label-small content-emphasis font-extended">
-                  custom image url
-                </span>
-              </div>
-              <Button
-                variant="Standard"
-                size="XSmall"
-                onClick={() => setShowCustomInput(!showCustomInput)}
-                className="cursor-pointer"
-              >
-                <span>{showCustomInput ? "cancel" : "+ add url"}</span>
-              </Button>
-            </div>
-
-            {avatarId === "custom" && !showCustomInput && (
-              <div className="flex items-center justify-between text-caption-small font-mono content-muted bg-surface-0 padding-small radius-small stroke-standard stroke-default">
-                <span className="truncate max-width-[260px]">{avatarSrc}</span>
-                <span className="text-system-success font-bold">active</span>
-              </div>
-            )}
-
-            {showCustomInput && (
-              <form onSubmit={handleApplyCustom} className="flex flex-col gap-xsmall margin-top-xsmall">
-                <input
-                  type="text"
-                  placeholder="https://... or ./media/desktop.png"
-                  value={customInput}
-                  onChange={(e) => setCustomInput(e.target.value)}
-                  className="width-full padding-small radius-small bg-surface-0 stroke-standard stroke-default text-body-small content-emphasis font-mono outline-none focus:stroke-emphasis"
-                />
-                <Button
-                  type="submit"
-                  variant="Emphasis"
-                  size="Small"
-                  isDisabled={!customInput.trim()}
-                  className="width-full cursor-pointer margin-top-xxsmall"
-                >
-                  <span>apply image</span>
-                </Button>
-              </form>
-            )}
           </div>
         </div>
 
