@@ -13,7 +13,7 @@ export const projectsData: ProjectItem[] = [
     fullDescription: "bespoke desktop environment built with quickshell (qml) and hyprland. includes custom launcher menus, status indicators, hardware telemetry integration, and matugen dynamic theme generation.",
     previewMedia: {
       type: "image",
-      src: "/media/desktop.png",
+      src: "./media/desktop.png",
       caption: "quickshell desktop with dolphin on hyprland",
     },
   },
@@ -62,7 +62,7 @@ export const projectsData: ProjectItem[] = [
     fullDescription: "personal site built with react 19, tailwind css, and roblox foundation web primitives.",
     previewMedia: {
       type: "image",
-      src: "/media/wallpaper-brain-shell.png",
+      src: "./media/wallpaper-brain-shell.png",
       caption: "foundation-web components and builder typography",
     },
   },
