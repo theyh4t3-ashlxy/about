@@ -52,10 +52,10 @@ export function SettingsDialog() {
       open={isSettingsOpen}
       onOpenChange={setIsSettingsOpen}
     >
-      <DialogContent className="max-w-xl bg-surface-100 border border-stroke-default rounded-2xl overflow-hidden shadow-2xl">
-        <DialogHeroMedia className="bg-surface-0 border-b border-stroke-default px-6 py-5 flex items-center pr-16">
+      <DialogContent className="max-w-xl bg-surface-100 border border-stroke-default rounded-large overflow-hidden shadow-2xl">
+        <DialogHeroMedia className="bg-surface-0 border-b border-stroke-default px-6 py-4 flex items-center pr-16">
           <div className="flex items-center gap-medium">
-            <div className="w-10 h-10 rounded-xl bg-surface-200 border border-stroke-default flex items-center justify-center text-content-emphasis shadow-sm">
+            <div className="w-9 h-9 rounded-medium bg-shift-100 border border-stroke-default flex items-center justify-center text-content-emphasis shadow-sm">
               <Icon name="icon-regular-gear" size="Medium" />
             </div>
             <div>
@@ -63,7 +63,7 @@ export function SettingsDialog() {
                 settings
               </span>
               <p className="text-body-medium content-muted lowercase mt-0.5">
-                interface mode & procedural foundation color engine
+                interface mode & foundation color engine
               </p>
             </div>
           </div>
@@ -81,14 +81,14 @@ export function SettingsDialog() {
               </p>
             </div>
 
-            <div className="grid grid-cols-3 gap-small p-1.5 bg-surface-0/70 rounded-xl border border-stroke-default shadow-inner">
+            <div className="grid grid-cols-3 gap-small p-1 bg-surface-0 rounded-medium border border-stroke-default">
               <button
                 type="button"
                 onClick={() => setMode("auto")}
-                className={`flex items-center justify-center gap-small py-2.5 px-3 rounded-lg text-body-medium font-medium transition-all ${
+                className={`flex items-center justify-center gap-small py-2 px-3 rounded-small text-body-medium transition-colors cursor-pointer ${
                   mode === "auto"
-                    ? "bg-surface-200 text-content-emphasis font-bold shadow-sm border border-stroke-default"
-                    : "text-content-muted hover:text-content-emphasis hover:bg-surface-100/50"
+                    ? "bg-shift-200 content-emphasis font-bold shadow-sm"
+                    : "bg-shift-100 content-muted hover:content-emphasis hover:bg-shift-200"
                 }`}
               >
                 <Icon name="icon-regular-three-sliders-horizontal" size="Small" />
@@ -98,10 +98,10 @@ export function SettingsDialog() {
               <button
                 type="button"
                 onClick={() => setMode("light")}
-                className={`flex items-center justify-center gap-small py-2.5 px-3 rounded-lg text-body-medium font-medium transition-all ${
+                className={`flex items-center justify-center gap-small py-2 px-3 rounded-small text-body-medium transition-colors cursor-pointer ${
                   mode === "light"
-                    ? "bg-surface-200 text-content-emphasis font-bold shadow-sm border border-stroke-default"
-                    : "text-content-muted hover:text-content-emphasis hover:bg-surface-100/50"
+                    ? "bg-shift-200 content-emphasis font-bold shadow-sm"
+                    : "bg-shift-100 content-muted hover:content-emphasis hover:bg-shift-200"
                 }`}
               >
                 <Icon name="icon-regular-sun" size="Small" />
@@ -111,10 +111,10 @@ export function SettingsDialog() {
               <button
                 type="button"
                 onClick={() => setMode("dark")}
-                className={`flex items-center justify-center gap-small py-2.5 px-3 rounded-lg text-body-medium font-medium transition-all ${
+                className={`flex items-center justify-center gap-small py-2 px-3 rounded-small text-body-medium transition-colors cursor-pointer ${
                   mode === "dark"
-                    ? "bg-surface-200 text-content-emphasis font-bold shadow-sm border border-stroke-default"
-                    : "text-content-muted hover:text-content-emphasis hover:bg-surface-100/50"
+                    ? "bg-shift-200 content-emphasis font-bold shadow-sm"
+                    : "bg-shift-100 content-muted hover:content-emphasis hover:bg-shift-200"
                 }`}
               >
                 <Icon name="icon-regular-moon" size="Small" />
@@ -144,10 +144,10 @@ export function SettingsDialog() {
                     key={preset.id}
                     type="button"
                     onClick={() => setPresetId(preset.id)}
-                    className={`group relative flex items-center gap-small p-3 rounded-xl border text-left transition-all ${
+                    className={`group relative flex items-center gap-small p-2.5 rounded-medium border text-left transition-all cursor-pointer ${
                       isSelected
-                        ? "border-system-emphasis bg-surface-200 shadow-md ring-1 ring-system-emphasis"
-                        : "border-stroke-default bg-surface-0 hover:bg-surface-200/60 hover:border-stroke-emphasis"
+                        ? "border-system-emphasis bg-shift-200 shadow-sm"
+                        : "border-stroke-default bg-surface-0 hover:bg-shift-100 hover:border-stroke-emphasis"
                     }`}
                   >
                     <span
@@ -170,14 +170,14 @@ export function SettingsDialog() {
 
           <Divider />
 
-          {/* Procedural Custom Color Engine */}
+          {/* Custom Accent Color */}
           <div className="flex flex-col gap-small">
             <div className="flex flex-col gap-xxsmall">
               <span className="text-title-small content-emphasis font-bold lowercase">
-                custom color engine
+                custom accent color
               </span>
               <p className="text-body-medium content-muted lowercase">
-                transforms the entire canvas, surfaces, and borders to any hex code
+                applies custom hex code to primary buttons and active accents
               </p>
             </div>
 
@@ -195,7 +195,7 @@ export function SettingsDialog() {
                       setHexInput(swatch.color);
                       setCustomColor(swatch.color);
                     }}
-                    className={`w-8 h-8 rounded-circle border transition-all ${
+                    className={`w-7 h-7 rounded-circle border transition-all cursor-pointer ${
                       isSelected
                         ? "scale-110 ring-2 ring-system-emphasis ring-offset-2 ring-offset-surface-100 border-white"
                         : "border-white/20 hover:scale-110 opacity-85 hover:opacity-100"
@@ -208,9 +208,9 @@ export function SettingsDialog() {
             </div>
 
             {/* Hex code input & native color picker */}
-            <div className="flex items-center gap-small p-2.5 rounded-xl bg-surface-0 border border-stroke-default mt-1">
+            <div className="flex items-center gap-small p-2 rounded-medium bg-surface-0 border border-stroke-default mt-1">
               <label
-                className="relative w-8 h-8 rounded-circle overflow-hidden cursor-pointer border border-stroke-default shrink-0 shadow-sm"
+                className="relative w-7 h-7 rounded-circle overflow-hidden cursor-pointer border border-stroke-default shrink-0 shadow-sm flex items-center justify-center"
                 style={{ backgroundColor: customColor }}
                 title="open native color wheel"
               >
@@ -232,7 +232,7 @@ export function SettingsDialog() {
                 />
               </div>
 
-              <span className="text-caption-large font-mono px-2 py-1 rounded bg-surface-200 border border-stroke-default content-muted lowercase">
+              <span className="text-caption-small font-mono px-2 py-0.5 rounded bg-shift-200 border border-stroke-default content-muted lowercase">
                 hex
               </span>
             </div>

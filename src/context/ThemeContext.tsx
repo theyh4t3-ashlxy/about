@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { themePresets, FoundationThemePreset } from "../data/themes";
-import { generateProceduralPalette } from "../utils/color";
 
 export type ThemeMode = "auto" | "light" | "dark";
 
@@ -21,7 +20,7 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
-const STORAGE_KEY = "about-theme-config-v2";
+const STORAGE_KEY = "about-theme-config-v3";
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mode, setModeState] = useState<ThemeMode>(() => {
@@ -91,6 +90,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       body.style.setProperty(name, val, "important");
     };
 
+    const clearVar = (name: string) => {
+      root.style.removeProperty(name);
+      body.style.removeProperty(name);
+    };
+
     const apply = () => {
       const isDarkActive =
         mode === "dark" || (mode === "auto" && mediaQuery.matches);
@@ -107,28 +111,22 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         body.classList.add("light-theme");
       }
 
-      // 2. Custom color procedural engine
+      // 2. Custom color vs Foundation Presets
       if (isCustom) {
-        const palette = generateProceduralPalette(customColor, isDarkActive);
+        // Custom hex strictly applies to primary buttons and active accents
+        setCssVar("--color-system-emphasis", customColor);
+        setCssVar("--color-action-emphasis-background", customColor);
+        setCssVar("--accent-color", customColor);
 
-        setCssVar("--color-surface-0", palette.surface0);
-        setCssVar("--color-surface-100", palette.surface100);
-        setCssVar("--color-surface-200", palette.surface200);
-        setCssVar("--color-stroke-default", palette.strokeDefault);
-        setCssVar("--color-stroke-emphasis", palette.strokeEmphasis);
-        setCssVar("--color-system-emphasis", palette.accent);
-        setCssVar("--color-action-emphasis-background", palette.accent);
-        setCssVar("--accent-color", palette.accent);
-
-        if (isDarkActive) {
-          setCssVar("--color-content-emphasis", palette.contentEmphasis);
-          setCssVar("--color-content-default", palette.contentDefault);
-          setCssVar("--color-content-muted", palette.contentMuted);
-        } else {
-          setCssVar("--color-content-emphasis", palette.contentEmphasis);
-          setCssVar("--color-content-default", palette.contentDefault);
-          setCssVar("--color-content-muted", palette.contentMuted);
-        }
+        // Clear custom surface overrides so shift tokens and surfaces remain authentic
+        clearVar("--color-surface-0");
+        clearVar("--color-surface-100");
+        clearVar("--color-surface-200");
+        clearVar("--color-stroke-default");
+        clearVar("--color-stroke-emphasis");
+        clearVar("--color-content-emphasis");
+        clearVar("--color-content-default");
+        clearVar("--color-content-muted");
       } else {
         // Foundation Presets
         const preset =
@@ -145,17 +143,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         setCssVar("--color-action-emphasis-background", preset.accentColor);
         setCssVar("--accent-color", preset.accentColor);
 
-        // Remove manual overrides to restore standard token hierarchy for presets
-        root.style.removeProperty("--color-stroke-default");
-        body.style.removeProperty("--color-stroke-default");
-        root.style.removeProperty("--color-stroke-emphasis");
-        body.style.removeProperty("--color-stroke-emphasis");
-        root.style.removeProperty("--color-content-emphasis");
-        body.style.removeProperty("--color-content-emphasis");
-        root.style.removeProperty("--color-content-default");
-        body.style.removeProperty("--color-content-default");
-        root.style.removeProperty("--color-content-muted");
-        body.style.removeProperty("--color-content-muted");
+        clearVar("--color-stroke-default");
+        clearVar("--color-stroke-emphasis");
+        clearVar("--color-content-emphasis");
+        clearVar("--color-content-default");
+        clearVar("--color-content-muted");
       }
     };
 

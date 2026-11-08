@@ -47,16 +47,15 @@ export function Header() {
             </span>
           </div>
 
-          <Button
-            variant="Standard"
-            size="Small"
+          <button
+            type="button"
             onClick={() => setIsSettingsOpen(true)}
-            className="flex items-center gap-xsmall shrink-0"
+            className="bg-shift-100 hover:bg-shift-200 active:bg-shift-300 px-2.5 py-1 rounded-small border border-stroke-default content-default hover:content-emphasis flex items-center gap-xsmall font-mono transition-colors cursor-pointer shrink-0"
             aria-label="theme settings"
           >
-            <span>settings</span>
+            <span className="lowercase">settings</span>
             <Icon name="icon-regular-gear" size="Small" />
-          </Button>
+          </button>
         </div>
       </div>
     </header>
