@@ -151,7 +151,7 @@ export function SettingsDialog() {
                     }`}
                   >
                     <span
-                      className="w-4 h-4 rounded-full shrink-0 shadow-sm transition-transform group-hover:scale-110"
+                      className="w-4 h-4 rounded-circle shrink-0 shadow-sm transition-transform group-hover:scale-110"
                       style={{ backgroundColor: preset.accentColor }}
                     />
                     <span className="text-body-medium font-medium content-emphasis lowercase truncate flex-1">
@@ -195,7 +195,7 @@ export function SettingsDialog() {
                       setHexInput(swatch.color);
                       setCustomColor(swatch.color);
                     }}
-                    className={`w-8 h-8 rounded-full border transition-all ${
+                    className={`w-8 h-8 rounded-circle border transition-all ${
                       isSelected
                         ? "scale-110 ring-2 ring-system-emphasis ring-offset-2 ring-offset-surface-100 border-white"
                         : "border-white/20 hover:scale-110 opacity-85 hover:opacity-100"
@@ -210,7 +210,7 @@ export function SettingsDialog() {
             {/* Hex code input & native color picker */}
             <div className="flex items-center gap-small p-2.5 rounded-xl bg-surface-0 border border-stroke-default mt-1">
               <label
-                className="relative w-8 h-8 rounded-lg overflow-hidden cursor-pointer border border-stroke-default shrink-0 shadow-sm"
+                className="relative w-8 h-8 rounded-circle overflow-hidden cursor-pointer border border-stroke-default shrink-0 shadow-sm"
                 style={{ backgroundColor: customColor }}
                 title="open native color wheel"
               >

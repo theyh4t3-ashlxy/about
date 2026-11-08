@@ -29,6 +29,14 @@ export default {
     aspectRatio: true,
   },
   theme: {
+    extend: {
+      borderRadius: {
+        full: "9999px",
+        circle: "9999px",
+        xl: "12px",
+        "2xl": "16px",
+      },
+    },
     screens: {
       sm: "640px",
       md: "768px",
