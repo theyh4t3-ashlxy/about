@@ -23,7 +23,7 @@ export function Header() {
       <div className="max-w-5xl w-full mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
         <div className="flex items-center gap-small min-w-0">
           <div className="flex items-center justify-center p-1.5 rounded-small bg-surface-200 shrink-0">
-            <Icon name="icon-filled-studio" size="Small" className="content-emphasis" />
+            <Icon name="icon-filled-tilt" size="Small" className="content-emphasis" />
           </div>
           <span className="font-extended text-title-medium content-emphasis truncate">
             ashley
@@ -39,11 +39,13 @@ export function Header() {
           </div>
 
           <div className="hidden md:flex items-center gap-small font-mono shrink-0">
-            <span className="bg-surface-0 px-2.5 py-1 rounded-small border border-stroke-default content-default">
-              38% juice
+            <span className="bg-surface-0 px-2.5 py-1 rounded-small border border-stroke-default content-default flex items-center gap-xsmall">
+              <Icon name="icon-regular-lightning-bolt" size="XSmall" className="content-system-emphasis" />
+              <span>38% juice</span>
             </span>
-            <span className="bg-surface-0 px-2.5 py-1 rounded-small border border-stroke-default content-default">
-              52°c
+            <span className="bg-surface-0 px-2.5 py-1 rounded-small border border-stroke-default content-default flex items-center gap-xsmall">
+              <Icon name="icon-regular-speedometer" size="XSmall" className="content-system-warning" />
+              <span>52°c</span>
             </span>
           </div>
 

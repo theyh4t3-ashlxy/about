@@ -59,7 +59,7 @@ export function CustomColorDialog() {
               className="w-9 h-9 rounded-circle border border-stroke-default flex items-center justify-center shadow-sm shrink-0"
               style={{ backgroundColor: customColor }}
             >
-              <Icon name="icon-regular-circle" size="Small" className="text-white drop-shadow" />
+              <Icon name="icon-regular-paint-brush" size="Small" className="text-white drop-shadow" />
             </div>
             <div>
               <span className="text-title-medium font-extended font-bold content-emphasis lowercase tracking-tight">

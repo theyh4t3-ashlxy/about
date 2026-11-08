@@ -21,10 +21,11 @@ export function MediaView() {
   const getCategoryIcon = (category: string) => {
     switch (category) {
       case "recording":
-        return "icon-regular-circle-play";
+        return "icon-regular-video-camera";
       case "wallpaper":
+        return "icon-regular-image";
       case "artwork":
-        return "icon-regular-computer-monitor";
+        return "icon-regular-paint-brush";
       default:
         return "icon-regular-folder";
     }

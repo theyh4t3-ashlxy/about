@@ -24,17 +24,17 @@ export function ProjectsView() {
       case "delirium":
         return "icon-regular-computer-monitor";
       case "forktune":
-        return "icon-regular-circle-play";
+        return "icon-regular-music-note";
       case "cxh-opener":
-        return "icon-regular-code";
+        return "icon-regular-hammer-code";
       case "rust-doom":
-        return "icon-regular-flame";
+        return "icon-regular-controller-with-cog";
       case "keygen":
         return "icon-regular-shield-check";
       case "fan-control":
         return "icon-regular-gear";
       case "about":
-        return "icon-filled-studio";
+        return "icon-filled-tilt";
       default:
         return "icon-regular-folder";
     }
@@ -221,7 +221,10 @@ export function ProjectsView() {
                       className="shrink-0 flex items-center gap-xsmall"
                     >
                       <span>{copied ? "copied" : "copy"}</span>
-                      <Icon name="icon-regular-code" size="XSmall" />
+                      <Icon
+                        name={copied ? "icon-regular-check" : "icon-regular-two-stacked-squares-code"}
+                        size="XSmall"
+                      />
                     </Button>
                   </div>
                 </div>

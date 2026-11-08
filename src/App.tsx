@@ -1,5 +1,5 @@
 import React from "react";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@rbx/foundation-ui";
+import { Tabs, TabsList, TabsTrigger, TabsContent, Icon } from "@rbx/foundation-ui";
 import { Header } from "./components/Header";
 import { ProfileHero } from "./components/ProfileHero";
 import { TelemetryView } from "./components/TelemetryView";
@@ -24,26 +24,30 @@ export default function App() {
               <TabsList className="bg-surface-0 border border-stroke-default p-1.5 rounded-medium mb-6 flex flex-wrap gap-xsmall">
                 <TabsTrigger
                   value="telemetry"
-                  className="px-4 py-2 rounded-small text-label-medium content-muted data-[state=active]:content-emphasis data-[state=active]:bg-surface-200 transition-all cursor-pointer"
+                  className="px-4 py-2 rounded-small text-label-medium content-muted data-[state=active]:content-emphasis data-[state=active]:bg-surface-200 transition-all cursor-pointer flex items-center gap-xsmall"
                 >
-                  system & hardware
+                  <Icon name="icon-regular-computer-monitor" size="Small" />
+                  <span>system & hardware</span>
                 </TabsTrigger>
                 <TabsTrigger
                   value="projects"
-                  className="px-4 py-2 rounded-small text-label-medium content-muted data-[state=active]:content-emphasis data-[state=active]:bg-surface-200 transition-all cursor-pointer"
+                  className="px-4 py-2 rounded-small text-label-medium content-muted data-[state=active]:content-emphasis data-[state=active]:bg-surface-200 transition-all cursor-pointer flex items-center gap-xsmall"
                 >
-                  projects
+                  <Icon name="icon-regular-hammer-code" size="Small" />
+                  <span>projects</span>
                 </TabsTrigger>
                 <TabsTrigger
                   value="media"
-                  className="px-4 py-2 rounded-small text-label-medium content-muted data-[state=active]:content-emphasis data-[state=active]:bg-surface-200 transition-all cursor-pointer"
+                  className="px-4 py-2 rounded-small text-label-medium content-muted data-[state=active]:content-emphasis data-[state=active]:bg-surface-200 transition-all cursor-pointer flex items-center gap-xsmall"
                 >
-                  captures
+                  <Icon name="icon-regular-photo-camera" size="Small" />
+                  <span>captures</span>
                 </TabsTrigger>
                 <TabsTrigger
                   value="bugs"
                   className="px-4 py-2 rounded-small text-label-medium content-muted data-[state=active]:content-emphasis data-[state=active]:bg-surface-200 transition-all cursor-pointer flex items-center gap-xsmall"
                 >
+                  <Icon name="icon-regular-bug" size="Small" />
                   <span>known issues</span>
                   <span className="px-1.5 py-0.5 rounded-full text-caption-small bg-system-warning/20 content-system-warning font-mono">
                     1 open

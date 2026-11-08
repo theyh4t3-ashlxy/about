@@ -100,22 +100,27 @@ export function AnomaliesView() {
           <DialogContent className="max-w-xl bg-surface-100 border border-stroke-default rounded-xl overflow-hidden shadow-2xl">
             <DialogHeroMedia className="bg-surface-0 border-b border-stroke-default px-6 py-4 flex items-center pr-16">
               <div className="flex items-center gap-small">
-                <StatusIndicator
-                  variant="Dot"
-                  color={
-                    selectedAnomaly.status === "resolved"
-                      ? "Success"
-                      : selectedAnomaly.status === "pushed"
-                      ? "Emphasis"
-                      : "Warning"
-                  }
-                  size="Large"
-                />
+                <div className="p-2 rounded-small bg-surface-200 shrink-0">
+                  <Icon name="icon-regular-bug" size="Large" className="content-emphasis" />
+                </div>
                 <div>
-                  <span className="text-title-medium font-medium content-emphasis">
-                    {selectedAnomaly.title}
-                  </span>
-                  <p className="text-caption-large font-mono content-muted">
+                  <div className="flex items-center gap-xsmall">
+                    <StatusIndicator
+                      variant="Dot"
+                      color={
+                        selectedAnomaly.status === "resolved"
+                          ? "Success"
+                          : selectedAnomaly.status === "pushed"
+                          ? "Emphasis"
+                          : "Warning"
+                      }
+                      size="Small"
+                    />
+                    <span className="text-title-medium font-medium content-emphasis">
+                      {selectedAnomaly.title}
+                    </span>
+                  </div>
+                  <p className="text-caption-large font-mono content-muted mt-0.5">
                     status: {selectedAnomaly.status}
                   </p>
                 </div>
@@ -173,7 +178,10 @@ export function AnomaliesView() {
                 className="flex items-center gap-xsmall"
               >
                 <span>{copiedTag === selectedAnomaly.tag ? "copied" : "copy tag"}</span>
-                <Icon name="icon-regular-code" size="Small" />
+                <Icon
+                  name={copiedTag === selectedAnomaly.tag ? "icon-regular-check" : "icon-regular-two-stacked-squares"}
+                  size="Small"
+                />
               </Button>
             </DialogFooter>
           </DialogContent>

@@ -23,22 +23,22 @@ export function TelemetryView() {
   const getEnvIcon = (index: number) => {
     switch (index) {
       case 0:
-        return "icon-regular-code";
+        return "icon-regular-hammer-code";
       case 1:
         return "icon-regular-computer-monitor";
       default:
-        return "icon-regular-shield-check";
+        return "icon-regular-teletype";
     }
   };
 
   const getSiliconIcon = (index: number) => {
     switch (index) {
       case 0:
-        return "icon-filled-studio";
+        return "icon-regular-speedometer";
       case 1:
-        return "icon-regular-computer-monitor";
+        return "icon-regular-cube-vertexes";
       default:
-        return "icon-regular-clock";
+        return "icon-regular-lightning-bolt";
     }
   };
 
@@ -70,8 +70,13 @@ export function TelemetryView() {
                     variant="Standard"
                     size="Small"
                     onClick={() => handleCopy(spec.subtitle, spec.title)}
+                    className="flex items-center gap-xsmall"
                   >
-                    {copiedKey === spec.title ? "copied" : "copy"}
+                    <span>{copiedKey === spec.title ? "copied" : "copy"}</span>
+                    <Icon
+                      name={copiedKey === spec.title ? "icon-regular-check" : "icon-regular-two-stacked-squares"}
+                      size="XSmall"
+                    />
                   </Button>
                 </div>
               }

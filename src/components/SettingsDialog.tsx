@@ -185,7 +185,7 @@ export function SettingsDialog() {
               className="flex items-center gap-xsmall shrink-0"
             >
               <span>{isCustom ? "edit custom" : "color wheel"}</span>
-              <Icon name="icon-regular-arrow-up-right-from-square" size="Small" />
+              <Icon name="icon-regular-paint-brush" size="Small" />
             </Button>
           </div>
         </DialogBody>
