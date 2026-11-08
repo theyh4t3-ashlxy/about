@@ -102,3 +102,31 @@ body {
 .font-extended {
   font-family: 'Builder Extended', 'Builder Sans', sans-serif !important;
 }
+
+/* Foundation Tabs layout fix: prevents vertical clipping in scroll container & restores token gap/padding */
+.foundation-web-tabs .scroll-x,
+.foundation-web-tabs > div:first-child {
+  overflow-y: visible !important;
+}
+
+.foundation-web-tabs [role="tablist"] {
+  overflow-y: visible !important;
+  align-items: stretch;
+}
+
+.foundation-web-tabs button[role="tab"] {
+  height: auto !important;
+  min-height: var(--size-1200, 48px) !important;
+  padding-left: var(--size-200, 16px) !important;
+  padding-right: var(--size-200, 16px) !important;
+  padding-top: var(--size-150, 12px) !important;
+  padding-bottom: var(--size-150, 12px) !important;
+}
+
+.foundation-web-tabs button[role="tab"] > div {
+  height: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: var(--size-100, 8px) !important;
+}
