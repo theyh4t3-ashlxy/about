@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Icon, StatusIndicator } from "@rbx/foundation-ui";
+import { Button, Icon, StatusIndicator } from "@rbx/foundation-ui";
+import { useTheme } from "../context/ThemeContext";
 
 export function Header() {
   const [time, setTime] = useState("");
+  const { setIsSettingsOpen } = useTheme();
 
   useEffect(() => {
     const updateTime = () => {
@@ -44,6 +46,17 @@ export function Header() {
               52°c
             </span>
           </div>
+
+          <Button
+            variant="Standard"
+            size="Small"
+            onClick={() => setIsSettingsOpen(true)}
+            className="flex items-center gap-xsmall shrink-0"
+            aria-label="theme settings"
+          >
+            <span>settings</span>
+            <Icon name="icon-regular-gear" size="Small" />
+          </Button>
         </div>
       </div>
     </header>
