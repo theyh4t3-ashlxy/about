@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import {
-  Badge,
-  Button,
-  Card,
+  Badge, // We'll use this only if it works, but I've replaced it with native divs below
   Dialog,
   DialogBody,
   DialogContent,
   DialogFooter,
-  DialogHeroMedia,
   DialogTitle,
-  Divider,
   Icon,
 } from "@rbx/foundation-ui";
 import { mediaData } from "../data/media";
@@ -18,194 +14,161 @@ import type { MediaCaptureItem } from "../types";
 export function MediaView() {
   const [selectedItem, setSelectedItem] = useState<MediaCaptureItem | null>(null);
 
-  const getCategoryIcon = (category: string) => {
-    switch (category) {
-      case "recording":
-        return "icon-regular-video-camera";
-      case "wallpaper":
-        return "icon-regular-image";
-      case "artwork":
-        return "icon-regular-paint-brush";
-      default:
-        return "icon-regular-folder";
-    }
-  };
-
   return (
-    <div className="flex flex-col gap-medium">
-      <div className="mb-2">
-        <h2 className="text-title-medium content-emphasis font-bold lowercase">
+    <div className="flex flex-col gap-large lowercase">
+      {/* Section Header */}
+      <div className="flex flex-col gap-xsmall">
+        <h2 className="text-heading-small content-emphasis">
           captures
         </h2>
-        <p className="text-body-medium content-muted lowercase">
+        <p className="text-body-medium content-sub">
           desktop screenshots, compositor recordings, and wallpapers
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-medium">
+      {/* Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-large">
         {mediaData.map((item) => (
-          <Card
+          <button
             key={item.id}
-            variant="Standard"
-            density="Default"
-            className="bg-surface-100 border border-stroke-default hover:border-stroke-emphasis transition-all duration-150 flex flex-col justify-between cursor-pointer group overflow-hidden rounded-large"
+            type="button"
             onClick={() => setSelectedItem(item)}
-            title={
-              <span className="font-mono text-title-small content-emphasis">
-                {item.title}
-              </span>
-            }
-            badge={
-              <Badge
-                label={item.tag}
-                size="XSmall"
-                variant={item.type === "video" ? "Emphasis" : "Standard"}
-              />
-            }
-            description={
-              <span className="text-body-medium content-muted line-clamp-2">
-                {item.subtitle}
-              </span>
-            }
+            className="foundation-web-button relative clip group/interactable focus-visible:outline-focus flex flex-col justify-between bg-surface-100 stroke-standard stroke-default radius-large padding-medium text-align-x-left cursor-pointer"
           >
-            {/* Thumbnail preview */}
-            <div className="my-3 relative rounded-medium overflow-hidden border border-stroke-default bg-surface-200/50 aspect-video w-full flex items-center justify-center">
+            {/* STATE LAYER */}
+            <div
+              aria-hidden="true"
+              data-testid="foundation-web-state-layer"
+              className="absolute inset-[0] transition-colors group-hover/interactable:bg-[var(--color-state-hover)] group-active/interactable:bg-[var(--color-state-press)]"
+            ></div>
+
+            {/* Header Row */}
+            <div className="flex flex-row items-start justify-between gap-small relative z-10">
+              <div className="flex flex-col gap-xsmall min-width-0">
+                <span className="text-label-medium content-emphasis text-truncate-end">
+                  {item.title}
+                </span>
+                <span className="text-caption-small content-sub text-truncate-end">
+                  {item.subtitle}
+                </span>
+              </div>
+
+              {/* Native Foundation Badge Structure */}
+              <div className="foundation-web-badge flex items-center select-none gap-[var(--size-150)] radius-circle height-600 width-[fit-content] padding-x-small bg-shift-200 content-emphasis stroke-none shrink-0">
+                <span className="text-no-wrap text-truncate-split text-label-small padding-y-xsmall padding-x-xxsmall content-emphasis">
+                  {item.tag}
+                </span>
+              </div>
+            </div>
+
+            {/* Media Preview */}
+            <div className="relative width-full radius-medium overflow-hidden clip margin-y-small relative z-10 aspect-video bg-surface-200">
               {item.type === "video" ? (
-                <div className="w-full h-full relative flex items-center justify-center">
-                  <video
-                    src={item.src}
-                    muted
-                    preload="metadata"
-                    className="w-full h-full object-cover opacity-80"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-colors">
-                    <div className="p-2.5 rounded-full bg-surface-100/90 text-content-emphasis shadow-lg group-hover:scale-110 transition-transform">
+                <div className="width-full height-full relative flex items-center justify-center">
+                  <video src={item.src} muted preload="metadata" className="width-full height-full object-cover opacity-80" />
+                  <div className="absolute inset-[0] flex items-center justify-center bg-[rgba(0,0,0,0.4)] group-hover/interactable:bg-[rgba(0,0,0,0.2)] transition-colors">
+                    <div className="padding-small radius-circle bg-surface-100 text-content-emphasis shadow-transient-high">
                       <Icon name="icon-regular-circle-play" size="Medium" />
                     </div>
                   </div>
                 </div>
               ) : (
-                <img
-                  src={item.src}
-                  alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
-                  loading="lazy"
-                />
+                <img src={item.src} alt={item.title} className="width-full height-full object-cover" loading="lazy" />
               )}
             </div>
 
-            <div className="pt-2 mt-auto flex items-center justify-between border-t border-stroke-default/60">
-              <span className="text-caption-large font-mono content-subtle">
+            {/* Metadata Row */}
+            <div className="flex flex-row items-center justify-between relative z-10 margin-top-auto">
+              <span className="text-caption-small content-muted font-mono">
                 {item.resolution}
               </span>
-
-              <div className="flex items-center gap-xsmall" onClick={(e) => e.stopPropagation()}>
-                <Button
-                  variant="Standard"
-                  size="Small"
-                  onClick={() => setSelectedItem(item)}
-                >
-                  {item.type === "video" ? "play" : "view"}
-                </Button>
-              </div>
+              <span className="text-caption-small content-muted">
+                {item.timestamp}
+              </span>
             </div>
-          </Card>
+          </button>
         ))}
       </div>
 
-      {/* Foundation Dialog popup for media viewing */}
+      {/* Dialog */}
       {selectedItem && (
-        <Dialog
-          size="Large"
-          isModal={true}
-          hasCloseAffordance={true}
-          closeLabel="Close dialog"
-          open={!!selectedItem}
-          onOpenChange={(open) => !open && setSelectedItem(null)}
-        >
-          <DialogContent className="max-w-2xl bg-surface-100 border border-stroke-default rounded-large overflow-hidden shadow-2xl">
-            <DialogHeroMedia className="bg-surface-200/50 border-b border-stroke-default p-4 flex items-center justify-center overflow-hidden">
-              {selectedItem.type === "video" ? (
-                <video
-                  src={selectedItem.src}
-                  controls
-                  autoPlay
-                  className="max-h-[50vh] max-w-full rounded-small object-contain shadow-md bg-black"
-                />
-              ) : (
-                <img
-                  src={selectedItem.src}
-                  alt={selectedItem.title}
-                  className="max-h-[50vh] max-w-full rounded-small object-contain shadow-md"
-                />
-              )}
-            </DialogHeroMedia>
+        <Dialog size="Large" isModal={true} hasCloseAffordance={true} closeLabel="close" open={!!selectedItem} onOpenChange={(open) => !open && setSelectedItem(null)}>
+          <DialogContent className="relative radius-large bg-surface-100 stroke-muted stroke-standard foundation-web-dialog-content shadow-transient-high">
 
-            <DialogBody className="p-6 flex flex-col gap-medium">
-              <div className="flex items-start justify-between gap-medium flex-wrap">
-                <div>
-                  <DialogTitle className="text-heading-small content-emphasis font-extended">
-                    {selectedItem.title}
-                  </DialogTitle>
-                  <p className="text-body-medium content-default pt-1">
-                    {selectedItem.subtitle}
-                  </p>
-                </div>
+            {/* Content Wrapper */}
+            <div className="padding-x-xlarge padding-top-xlarge padding-bottom-xlarge text-body-medium flex flex-col gap-large lowercase">
 
-                <div className="flex items-center gap-xsmall">
-                  <Badge
-                    label={selectedItem.tag}
-                    size="Small"
-                    variant={selectedItem.type === "video" ? "Emphasis" : "Standard"}
-                  />
-                </div>
+              {/* Header */}
+              <div className="flex flex-col gap-xsmall">
+                <DialogTitle className="text-heading-small margin-none content-emphasis">
+                  {selectedItem.title}
+                </DialogTitle>
+                <p className="text-body-medium content-sub">
+                  {selectedItem.subtitle}
+                </p>
               </div>
 
-              <div className="p-3.5 rounded-medium bg-surface-0 border border-stroke-default">
-                <p className="text-body-medium content-muted font-mono leading-relaxed text-sm">
+              {/* Media Container */}
+              <div className="width-full radius-medium overflow-hidden clip bg-surface-0 flex items-center justify-center stroke-standard stroke-default">
+                {selectedItem.type === "video" ? (
+                  <video src={selectedItem.src} controls autoPlay className="max-height-[50vh] width-full object-contain" />
+                ) : (
+                  <img src={selectedItem.src} alt={selectedItem.title} className="max-height-[50vh] width-full object-contain" />
+                )}
+              </div>
+
+              {/* Description Box */}
+              <div className="bg-shift-100 padding-medium radius-medium">
+                <p className="text-body-medium content-sub font-mono">
                   {selectedItem.description}
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-small text-caption-large font-mono">
-                <div className="p-2.5 rounded-small bg-surface-0 border border-stroke-default">
-                  <span className="content-muted block text-caption-small">resolution</span>
-                  <span className="content-emphasis font-semibold">{selectedItem.resolution}</span>
+              {/* Metadata Grid */}
+              <div className="grid grid-cols-3 gap-small">
+                <div className="bg-shift-100 padding-small radius-small flex flex-col gap-y-xsmall">
+                  <span className="text-caption-small content-sub">resolution</span>
+                  <span className="text-label-medium content-emphasis font-mono">{selectedItem.resolution}</span>
                 </div>
-                <div className="p-2.5 rounded-small bg-surface-0 border border-stroke-default">
-                  <span className="content-muted block text-caption-small">type</span>
-                  <span className="content-emphasis font-semibold">{selectedItem.type}</span>
+                <div className="bg-shift-100 padding-small radius-small flex flex-col gap-y-xsmall">
+                  <span className="text-caption-small content-sub">type</span>
+                  <span className="text-label-medium content-emphasis font-mono">{selectedItem.type}</span>
                 </div>
-                <div className="p-2.5 rounded-small bg-surface-0 border border-stroke-default col-span-2 sm:col-span-1">
-                  <span className="content-muted block text-caption-small">timestamp</span>
-                  <span className="content-emphasis font-semibold">{selectedItem.timestamp}</span>
+                <div className="bg-shift-100 padding-small radius-small flex flex-col gap-y-xsmall">
+                  <span className="text-caption-small content-sub">timestamp</span>
+                  <span className="text-label-medium content-emphasis font-mono">{selectedItem.timestamp}</span>
                 </div>
               </div>
-            </DialogBody>
 
-            <Divider />
+            </div>
 
-            <DialogFooter className="px-6 py-4 flex items-center justify-between bg-surface-100">
-              <Button
-                variant="Standard"
-                size="Medium"
+            {/* Footer Wrapper (Stacked Native) */}
+            <div className="padding-x-xlarge padding-bottom-xlarge width-full flex flex-col gap-small lowercase">
+              <button
+                type="button"
                 onClick={() => setSelectedItem(null)}
+                className="foundation-web-button relative clip group/interactable focus-visible:outline-focus flex items-center justify-center stroke-none padding-y-none select-none radius-medium text-label-medium height-1000 padding-x-medium bg-action-emphasis content-action-emphasis width-full"
               >
-                close
-              </Button>
+                <div aria-hidden="true" data-testid="foundation-web-state-layer" className="absolute inset-[0] transition-colors group-hover/interactable:bg-[var(--color-state-hover)] group-active/interactable:bg-[var(--color-state-press)]"></div>
+                <span className="flex items-center min-width-0 gap-small relative z-10">
+                  <span className="padding-y-xsmall text-truncate-end text-no-wrap">close</span>
+                </span>
+              </button>
 
-              <Button asChild variant="Standard" size="Medium">
-                <a
-                  href={selectedItem.src}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-xsmall"
-                >
-                  <span>open raw asset</span>
+              <a
+                href={selectedItem.src}
+                target="_blank"
+                rel="noreferrer"
+                className="foundation-web-button relative clip group/interactable focus-visible:outline-focus flex items-center justify-center stroke-standard stroke-default padding-y-none select-none radius-medium text-label-medium height-1000 padding-x-medium bg-none content-emphasis width-full text-no-wrap no-underline"
+              >
+                <div aria-hidden="true" data-testid="foundation-web-state-layer" className="absolute inset-[0] transition-colors group-hover/interactable:bg-[var(--color-state-hover)] group-active/interactable:bg-[var(--color-state-press)]"></div>
+                <span className="flex items-center min-width-0 gap-small relative z-10">
+                  <span className="padding-y-xsmall text-truncate-end text-no-wrap">open raw asset</span>
                   <Icon name="icon-regular-arrow-up-right-from-square" size="Small" />
-                </a>
-              </Button>
-            </DialogFooter>
+                </span>
+              </a>
+            </div>
+
           </DialogContent>
         </Dialog>
       )}

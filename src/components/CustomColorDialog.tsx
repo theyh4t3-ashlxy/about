@@ -2,13 +2,11 @@ import React, { useState } from "react";
 import {
   Dialog,
   DialogContent,
-  DialogHeroMedia,
   DialogBody,
   DialogTitle,
   DialogFooter,
   Button,
   Icon,
-  Divider,
 } from "@rbx/foundation-ui";
 import { useTheme } from "../context/ThemeContext";
 import { customColorSwatches } from "../data/themes";
@@ -52,41 +50,30 @@ export function CustomColorDialog() {
       open={isCustomColorOpen}
       onOpenChange={setIsCustomColorOpen}
     >
-      <DialogContent className="max-w-md bg-surface-100 border border-stroke-default rounded-large overflow-hidden shadow-2xl">
-        <DialogHeroMedia className="bg-surface-0 border-b border-stroke-default px-6 py-4 flex items-center pr-16">
-          <div className="flex items-center gap-medium">
-            <div
-              className="w-9 h-9 rounded-circle border border-stroke-default flex items-center justify-center shadow-sm shrink-0"
-              style={{ backgroundColor: customColor }}
-            >
-              <Icon name="icon-regular-paint-brush" size="Small" className="text-white drop-shadow" />
-            </div>
-            <div>
-              <span className="text-title-medium font-extended font-bold content-emphasis lowercase tracking-tight">
-                canvas color generator
-              </span>
-              <p className="text-body-medium content-muted lowercase mt-0.5">
-                procedural surface engine · shifts entire website
-              </p>
-            </div>
+      <DialogContent className="relative radius-large bg-surface-100 stroke-muted stroke-standard foundation-web-dialog-content shadow-transient-high">
+
+        {/* CONTENT WRAPPER */}
+        <div className="padding-x-xlarge padding-top-xlarge padding-bottom-xlarge text-body-medium flex flex-col gap-large font-builder lowercase">
+
+          <div className="flex flex-col gap-xsmall">
+            <DialogTitle className="text-heading-small margin-none content-emphasis lowercase">
+              Canvas color generator
+            </DialogTitle>
+            <p className="text-body-medium content-sub lowercase">
+              procedural surface engine · shifts entire website
+            </p>
           </div>
-        </DialogHeroMedia>
 
-        <DialogBody className="p-6 flex flex-col gap-large">
-          {/* Color Wheel & Hex Input */}
+          {/* --- HEX INPUT & COLOR WHEEL --- */}
           <div className="flex flex-col gap-small">
-            <div className="flex flex-col gap-xxsmall">
-              <DialogTitle className="text-title-small content-emphasis font-bold lowercase">
-                pick or enter hex code
-              </DialogTitle>
-              <p className="text-body-medium content-muted lowercase">
-                click the circle to open color wheel or type a hex
-              </p>
-            </div>
+            <span className="text-label-medium content-sub lowercase">pick or enter hex code</span>
 
-            <div className="flex items-center gap-small p-3 rounded-medium bg-surface-0 border border-stroke-default shadow-inner">
+            {/* Using the EXACT foundation-web-input structure from the Change Name dump */}
+            <div className="foundation-web-input flex items-center width-full stroke-standard bg-shift-100 height-1000 radius-medium padding-x-medium gap-small stroke-contrast-alpha focus-within:stroke-system-emphasis">
+
+              {/* The Color Swatch / Native Picker Trigger */}
               <label
-                className="relative w-10 h-10 rounded-circle overflow-hidden cursor-pointer border-2 border-white/40 shadow-sm shrink-0 transition-transform hover:scale-105"
+                className="relative size-600 radius-circle overflow-hidden cursor-pointer shrink-0 stroke-standard stroke-default shadow-sm"
                 style={{ backgroundColor: customColor }}
                 title="open native color wheel"
               >
@@ -98,39 +85,30 @@ export function CustomColorDialog() {
                 />
               </label>
 
-              <div className="flex-1 min-w-0">
-                <input
-                  type="text"
-                  value={hexInput}
-                  onChange={handleHexChange}
-                  placeholder="#00e5ff"
-                  className="w-full bg-transparent border-none outline-none font-mono text-title-small content-emphasis lowercase px-1"
-                />
-              </div>
+              {/* The Input Field */}
+              <input
+                type="text"
+                value={hexInput}
+                onChange={handleHexChange}
+                placeholder="#00e5ff"
+                className="width-full padding-none bg-none stroke-none outline-none content-emphasis placeholder:content-muted text-body-medium lowercase"
+              />
 
-              <span className="text-caption-small font-mono px-2 py-0.5 rounded bg-shift-200 border border-stroke-default content-muted lowercase">
-                hex
+              {/* The 'hex' badge on the right */}
+              <span className="foundation-web-badge flex items-center select-none gap-[var(--size-150)] radius-circle height-600 width-[fit-content] padding-x-small bg-shift-200 content-emphasis stroke-none">
+                <span className="text-no-wrap text-truncate-split text-label-small padding-y-xsmall padding-x-xxsmall content-emphasis lowercase">
+                  hex
+                </span>
               </span>
             </div>
           </div>
 
-          <Divider />
-
-          {/* Quick Swatches */}
+          {/* --- QUICK SWATCHES --- */}
           <div className="flex flex-col gap-small">
-            <div className="flex flex-col gap-xxsmall">
-              <span className="text-title-small content-emphasis font-bold lowercase">
-                preset swatches
-              </span>
-              <p className="text-body-medium content-muted lowercase">
-                vibrant foundations tuned for procedural contrast
-              </p>
-            </div>
-
+            <span className="text-label-medium content-sub lowercase">preset swatches</span>
             <div className="flex items-center flex-wrap gap-small">
               {customColorSwatches.map((swatch) => {
-                const isSelected =
-                  customColor.toLowerCase() === swatch.color.toLowerCase();
+                const isSelected = customColor.toLowerCase() === swatch.color.toLowerCase();
                 return (
                   <button
                     key={swatch.color}
@@ -139,81 +117,67 @@ export function CustomColorDialog() {
                       setHexInput(swatch.color);
                       setCustomColor(swatch.color);
                     }}
-                    className={`w-8 h-8 rounded-circle border transition-all cursor-pointer ${
-                      isSelected
-                        ? "scale-110 ring-2 ring-system-emphasis ring-offset-2 ring-offset-surface-100 border-white shadow-md"
-                        : "border-white/20 hover:scale-110 opacity-85 hover:opacity-100"
-                    }`}
+                    data-state={isSelected ? "checked" : "unchecked"}
+                    className="foundation-web-button relative clip group/interactable focus-visible:outline-focus flex items-center justify-center size-800 radius-circle bg-none data-[state=checked]:stroke-[3px] data-[state=checked]:stroke-system-contrast data-[state=unchecked]:stroke-none transition-all"
                     style={{ backgroundColor: swatch.color }}
                     title={swatch.name}
-                  />
+                  >
+                    <div aria-hidden="true" data-testid="foundation-web-state-layer" className="absolute inset-[0] transition-colors group-hover/interactable:bg-[var(--color-state-hover)] group-active/interactable:bg-[var(--color-state-press)]"></div>
+                    {isSelected && (
+                      <Icon name="icon-regular-check" size="Small" className="content-inverse-emphasis relative z-10 drop-shadow-md" />
+                    )}
+                  </button>
                 );
               })}
             </div>
           </div>
 
-          <Divider />
+          {/* --- LIVE PREVIEW CARD --- */}
+          <div className="bg-shift-100 padding-medium radius-medium flex flex-col gap-small">
+            <span className="text-label-medium content-sub lowercase">live generated palette</span>
 
-          {/* Live Preview Card */}
-          <div className="p-3.5 rounded-medium bg-surface-0 border border-stroke-default flex flex-col gap-xsmall">
-            <span className="text-caption-large font-mono content-muted lowercase">
-              live generated palette
-            </span>
             <div className="grid grid-cols-4 gap-small pt-1">
-              <div className="flex flex-col items-center gap-1">
-                <div
-                  className="w-full h-7 rounded border border-stroke-default bg-surface-0"
-                  title="canvas (surface-0)"
-                />
-                <span className="text-caption-small font-mono content-muted">canvas</span>
+              <div className="flex flex-col items-center gap-small">
+                <div className="width-full height-800 radius-small stroke-standard stroke-default bg-surface-0 shadow-sm" title="canvas (surface-0)" />
+                <span className="text-caption-small content-muted lowercase">canvas</span>
               </div>
-              <div className="flex flex-col items-center gap-1">
-                <div
-                  className="w-full h-7 rounded border border-stroke-default bg-surface-100"
-                  title="cards (surface-100)"
-                />
-                <span className="text-caption-small font-mono content-muted">cards</span>
+              <div className="flex flex-col items-center gap-small">
+                <div className="width-full height-800 radius-small stroke-standard stroke-default bg-surface-100 shadow-sm" title="cards (surface-100)" />
+                <span className="text-caption-small content-muted lowercase">cards</span>
               </div>
-              <div className="flex flex-col items-center gap-1">
-                <div
-                  className="w-full h-7 rounded border border-stroke-default bg-surface-200"
-                  title="elevated (surface-200)"
-                />
-                <span className="text-caption-small font-mono content-muted">elevated</span>
+              <div className="flex flex-col items-center gap-small">
+                <div className="width-full height-800 radius-small stroke-standard stroke-default bg-surface-200 shadow-sm" title="elevated (surface-200)" />
+                <span className="text-caption-small content-muted lowercase">elevated</span>
               </div>
-              <div className="flex flex-col items-center gap-1">
-                <div
-                  className="w-full h-7 rounded border border-stroke-default"
-                  style={{ backgroundColor: customColor }}
-                  title="accent (system-emphasis)"
-                />
-                <span className="text-caption-small font-mono content-muted">accent</span>
+              <div className="flex flex-col items-center gap-small">
+                <div className="width-full height-800 radius-small stroke-standard stroke-default shadow-sm" style={{ backgroundColor: customColor }} title="accent (system-emphasis)" />
+                <span className="text-caption-small content-muted lowercase">accent</span>
               </div>
             </div>
           </div>
-        </DialogBody>
 
-        <Divider />
+        </div>
 
-        <DialogFooter className="px-6 py-4 flex items-center justify-between bg-surface-100">
-          <Button
-            variant="Standard"
-            size="Small"
-            onClick={handleBackToSettings}
-            className="flex items-center gap-xsmall"
-          >
-            <span>settings</span>
-            <Icon name="icon-regular-gear" size="Small" />
-          </Button>
-
+        {/* --- FOOTER WRAPPER --- */}
+        <div className="padding-x-xlarge padding-bottom-xlarge width-full flex flex-col gap-small lowercase">
           <Button
             variant="Emphasis"
             size="Medium"
             onClick={() => setIsCustomColorOpen(false)}
+            className="width-full lowercase"
           >
             apply & close
           </Button>
-        </DialogFooter>
+          <Button
+            variant="Standard"
+            size="Medium"
+            onClick={handleBackToSettings}
+            className="width-full lowercase flex items-center justify-center gap-xsmall"
+          >
+            <Icon name="icon-regular-gear" size="Small" />
+            <span>settings</span>
+          </Button>
+        </div>
       </DialogContent>
     </Dialog>
   );

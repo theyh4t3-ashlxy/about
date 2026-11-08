@@ -130,3 +130,13 @@ body {
   justify-content: center !important;
   gap: var(--size-100, 8px) !important;
 }
+
+/* Foundation stroke fallbacks: ensures strokes never default to white currentColor */
+.stroke-standard:not([class*="stroke-emphasis"]):not([class*="stroke-muted"]):not([class*="stroke-system"]):not([class*="stroke-contrast"]) {
+  border-color: var(--color-stroke-default);
+}
+
+.border-stroke-default,
+.border-stroke-standard {
+  border-color: var(--color-stroke-default) !important;
+}

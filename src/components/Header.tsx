@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Icon, StatusIndicator } from "@rbx/foundation-ui";
+import { Icon, StatusIndicator } from "@rbx/foundation-ui";
 import { useTheme } from "../context/ThemeContext";
 
 export function Header() {
@@ -19,44 +19,56 @@ export function Header() {
   }, []);
 
   return (
-    <header className="w-full bg-surface-100 border-b border-stroke-default sticky top-0 z-50">
-      <div className="max-w-5xl w-full mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-small min-w-0">
-          <div className="flex items-center justify-center p-1.5 rounded-small bg-surface-200 shrink-0">
+    <header className="width-full bg-surface-100 stroke-standard stroke-default border-l-0 border-t-0 border-r-0 sticky top-[0] [z-index:50] lowercase">
+      <div className="max-width-[1024px] width-full margin-x-auto padding-x-medium padding-y-small flex items-center justify-between">
+
+        {/* Brand */}
+        <div className="flex items-center gap-small min-width-0">
+          <div className="flex items-center justify-center padding-xxsmall radius-small bg-shift-100 shrink-0">
             <Icon name="icon-filled-tilt" size="Small" className="content-emphasis" />
           </div>
-          <span className="font-extended text-title-medium content-emphasis truncate">
+          <span className="font-extended text-title-medium content-emphasis text-truncate-end">
             ashley
           </span>
         </div>
 
-        <div className="flex items-center gap-small sm:gap-medium text-caption-large content-muted shrink-0">
-          <div className="flex items-center gap-xsmall font-mono bg-shift-100 px-2.5 py-1 rounded-small border border-stroke-default shrink-0">
+        {/* Telemetry + Settings */}
+        <div className="flex items-center gap-small text-label-small content-muted shrink-0 font-mono">
+
+          {/* Online + Time */}
+          <div className="flex items-center gap-xsmall bg-shift-100 padding-x-small padding-y-xsmall radius-small shrink-0">
             <StatusIndicator variant="Dot" color="Success" size="Small" />
             <span className="content-default">online</span>
-            <span className="content-subtle">|</span>
-            <span className="content-emphasis font-bold">{time || "15:23"}</span>
+            <span className="content-sub">|</span>
+            <span className="content-emphasis">{time || "15:23"}</span>
           </div>
 
-          <div className="hidden md:flex items-center gap-small font-mono shrink-0">
-            <span className="bg-shift-100 px-2.5 py-1 rounded-small border border-stroke-default content-default flex items-center gap-xsmall">
+          {/* Battery + Temp */}
+          <div className="hidden md:flex items-center gap-small shrink-0">
+            <span className="bg-shift-100 padding-x-small padding-y-xsmall radius-small content-default flex items-center gap-xsmall">
               <Icon name="icon-regular-lightning-bolt" size="XSmall" className="content-system-emphasis" />
               <span>38% juice</span>
             </span>
-            <span className="bg-shift-100 px-2.5 py-1 rounded-small border border-stroke-default content-default flex items-center gap-xsmall">
+            <span className="bg-shift-100 padding-x-small padding-y-xsmall radius-small content-default flex items-center gap-xsmall">
               <Icon name="icon-regular-speedometer" size="XSmall" className="content-system-warning" />
               <span>52°c</span>
             </span>
           </div>
 
+          {/* Settings — Native Foundation Button */}
           <button
             type="button"
             onClick={() => setIsSettingsOpen(true)}
-            className="bg-shift-100 hover:bg-shift-200 active:bg-shift-300 px-2.5 py-1 rounded-small border border-stroke-default content-default hover:content-emphasis flex items-center gap-xsmall font-mono transition-colors cursor-pointer shrink-0"
+            className="foundation-web-button relative clip group/interactable focus-visible:outline-focus cursor-pointer flex items-center justify-center bg-shift-100 padding-x-small padding-y-xsmall radius-small content-default gap-xsmall shrink-0 stroke-none"
             aria-label="theme settings"
           >
-            <span className="lowercase">settings</span>
-            <Icon name="icon-regular-gear" size="Small" />
+            <div
+              aria-hidden="true"
+              data-testid="foundation-web-state-layer"
+              className="absolute inset-[0] transition-colors group-hover/interactable:bg-[var(--color-state-hover)] group-active/interactable:bg-[var(--color-state-press)]"
+            ></div>
+            <span className="lowercase relative z-10">settings</span>
+            <Icon name="icon-regular-gear" size="Small" className="relative z-10" />
           </button>
         </div>
       </div>
