@@ -67,7 +67,7 @@ export function ProfileHero() {
           </div>
         </div>
 
-        <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-small stroke-standard stroke-default border-x-0 border-b-0 sm:border-t-0 padding-top-small sm:padding-top-none shrink-0">
+        <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-small sm:border-0 stroke-t padding-top-small sm:padding-top-none shrink-0">
           <Button
             asChild
             variant="Emphasis"

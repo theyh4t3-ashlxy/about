@@ -83,9 +83,9 @@ export function TelemetryView() {
               </div>
 
               {spec.details && (
-                <div className="margin-top-small padding-top-small stroke-standard stroke-default border-x-0 border-b-0 grid grid-cols-1 sm:grid-cols-2 gap-x-large gap-y-xxsmall font-mono text-caption-large">
+                <div className="margin-top-small padding-top-small stroke-t grid grid-cols-1 sm:grid-cols-2 gap-x-large gap-y-xxsmall font-mono text-caption-large">
                   {spec.details.map((detail, idx) => (
-                    <div key={idx} className="flex items-center justify-between padding-y-xxsmall stroke-thin stroke-default border-x-0 border-t-0">
+                    <div key={idx} className="flex items-center justify-between padding-y-xxsmall stroke-b">
                       <span className="content-muted">{detail.label}</span>
                       <span className="content-emphasis font-medium text-truncate-end margin-left-small">{detail.value}</span>
                     </div>
@@ -145,9 +145,9 @@ export function TelemetryView() {
               </div>
 
               {spec.details && (
-                <div className="margin-top-small padding-top-small stroke-standard stroke-default border-x-0 border-b-0 grid grid-cols-1 sm:grid-cols-2 gap-x-large gap-y-xxsmall font-mono text-caption-large">
+                <div className="margin-top-small padding-top-small stroke-t grid grid-cols-1 sm:grid-cols-2 gap-x-large gap-y-xxsmall font-mono text-caption-large">
                   {spec.details.map((detail, idx) => (
-                    <div key={idx} className="flex items-center justify-between padding-y-xxsmall stroke-thin stroke-default border-x-0 border-t-0">
+                    <div key={idx} className="flex items-center justify-between padding-y-xxsmall stroke-b">
                       <span className="content-muted">{detail.label}</span>
                       <span className="content-emphasis font-medium text-truncate-end margin-left-small">{detail.value}</span>
                     </div>

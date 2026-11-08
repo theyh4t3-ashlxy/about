@@ -92,7 +92,7 @@ function MainDashboard() {
         </Tabs>
       </main>
 
-      <footer className="width-full stroke-standard stroke-default border-x-0 border-b-0 bg-surface-100 padding-y-large text-center text-caption-large font-mono content-muted flex flex-col sm:flex-row items-center justify-center gap-small sm:gap-medium">
+      <footer className="width-full stroke-t bg-surface-100 padding-y-large text-center text-caption-large font-mono content-muted flex flex-col sm:flex-row items-center justify-center gap-small sm:gap-medium">
         <span>thinkpad t16 · nixos 26.11</span>
         <span className="hidden sm:inline">·</span>
         <button

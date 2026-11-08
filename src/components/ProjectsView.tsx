@@ -86,7 +86,7 @@ export function ProjectsView() {
               </span>
             }
           >
-            <div className="padding-top-medium margin-top-auto flex items-center justify-between stroke-standard stroke-default border-x-0 border-b-0">
+            <div className="padding-top-medium margin-top-auto flex items-center justify-between stroke-t">
               <span className="text-caption-large font-mono content-sub">
                 {project.localOnly ? "local repository" : "github.com"}
               </span>
@@ -134,7 +134,7 @@ export function ProjectsView() {
           onOpenChange={(open) => !open && setSelectedProject(null)}
         >
           <DialogContent className="max-width-[672px] clip shadow-transient-high">
-            <DialogHeroMedia className="bg-surface-200/50 stroke-standard stroke-default border-x-0 border-t-0 padding-x-xlarge padding-y-medium flex items-center padding-right-[64px]">
+            <DialogHeroMedia className="bg-surface-200/50 stroke-b padding-x-xlarge padding-y-medium flex items-center padding-right-[64px]">
               <div className="flex items-center gap-small">
                 <div className="padding-small radius-small bg-surface-200">
                   <Icon name={getProjectIcon(selectedProject.id) as any} size="Large" className="content-emphasis" />
@@ -168,7 +168,7 @@ export function ProjectsView() {
                       />
                     )}
                   </div>
-                  <div className="width-full padding-x-medium padding-y-small bg-surface-100 stroke-standard stroke-default border-x-0 border-b-0 flex items-center justify-between text-caption-large font-mono content-muted">
+                  <div className="width-full padding-x-medium padding-y-small bg-surface-100 stroke-t flex items-center justify-between text-caption-large font-mono content-muted">
                     <span className="text-truncate-end margin-right-small">{selectedProject.previewMedia.caption}</span>
                     <Badge label="preview" size="Small" variant="Standard" />
                   </div>

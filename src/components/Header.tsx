@@ -28,7 +28,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className="width-full bg-surface-100 stroke-standard stroke-default border-l-0 border-t-0 border-r-0 sticky top-[0] [z-index:50] lowercase">
+    <header className="width-full bg-surface-100 sticky top-[0] [z-index:50] lowercase">
       <div className="max-width-[1024px] width-full margin-x-auto padding-x-medium padding-y-small flex items-center justify-between">
 
         {/* Brand + Avatar */}

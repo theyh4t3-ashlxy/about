@@ -98,7 +98,7 @@ export function AnomaliesView() {
           onOpenChange={(open) => !open && setSelectedAnomaly(null)}
         >
           <DialogContent className="max-width-[576px] clip shadow-transient-high">
-            <DialogHeroMedia className="bg-surface-200/50 stroke-standard stroke-default border-x-0 border-t-0 padding-x-xlarge padding-y-medium flex items-center padding-right-[64px]">
+            <DialogHeroMedia className="bg-surface-200/50 stroke-b padding-x-xlarge padding-y-medium flex items-center padding-right-[64px]">
               <div className="flex items-center gap-small">
                 <div className="padding-small radius-small bg-surface-200 shrink-0">
                   <Icon name="icon-regular-bug" size="Large" className="content-emphasis" />

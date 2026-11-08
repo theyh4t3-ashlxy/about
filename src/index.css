@@ -136,6 +136,25 @@ body {
   border-color: var(--color-stroke-default);
 }
 
+/* Directional stroke utilities conforming to Foundation stroke-standard tokens */
+.stroke-t {
+  border-top-width: var(--stroke-standard) !important;
+  border-top-style: solid !important;
+  border-top-color: var(--color-stroke-default) !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
+}
+
+.stroke-b {
+  border-bottom-width: var(--stroke-standard) !important;
+  border-bottom-style: solid !important;
+  border-bottom-color: var(--color-stroke-default) !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+}
+
 /* CRT scanline aesthetic overlay */
 .crt-scanlines {
   background: linear-gradient(
