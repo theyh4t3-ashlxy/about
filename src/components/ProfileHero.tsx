@@ -1,19 +1,34 @@
 import React from "react";
 import { Avatar, Badge, Button, Icon } from "@rbx/foundation-ui";
 import { profileData } from "../data/profile";
+import { useTheme } from "../context/ThemeContext";
 
 export function ProfileHero() {
+  const { avatarSrc, avatarInitials, setIsAvatarDialogOpen } = useTheme();
+
   return (
     <div className="bg-surface-100 border border-stroke-default rounded-large p-6 sm:p-7 transition-colors">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-large">
         <div className="flex items-start sm:items-center gap-medium min-w-0">
-          <Avatar
-            initials={profileData.avatarInitials}
-            size="XLarge"
-            status="InExperience"
-            alt="Ashley avatar"
-            className="ring-2 ring-stroke-emphasis shrink-0"
-          />
+          <button
+            type="button"
+            onClick={() => setIsAvatarDialogOpen(true)}
+            className="group relative cursor-pointer rounded-full p-0 border-0 bg-transparent outline-none focus-visible:ring-2 focus-visible:ring-stroke-emphasis shrink-0 transition-transform active:scale-95"
+            aria-label="switch profile picture"
+            title="click to change profile picture"
+          >
+            <Avatar
+              src={avatarSrc}
+              initials={avatarInitials}
+              size="XLarge"
+              status="InExperience"
+              alt="Ashley avatar"
+              className="ring-2 ring-stroke-emphasis group-hover:ring-stroke-default transition-all"
+            />
+            <div className="absolute inset-0 rounded-full bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <Icon name="icon-regular-photo-camera" size="Small" className="text-white drop-shadow" />
+            </div>
+          </button>
 
           <div className="flex flex-col gap-xxsmall min-w-0">
             <div className="flex flex-wrap items-center gap-small">

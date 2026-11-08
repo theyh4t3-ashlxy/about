@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Icon, StatusIndicator } from "@rbx/foundation-ui";
+import { Icon, StatusIndicator, Avatar } from "@rbx/foundation-ui";
 import { useTheme } from "../context/ThemeContext";
 
 export function Header() {
   const [time, setTime] = useState("");
-  const { setIsSettingsOpen } = useTheme();
+  const { setIsSettingsOpen, avatarSrc, avatarInitials, setIsAvatarDialogOpen } = useTheme();
 
   useEffect(() => {
     const updateTime = () => {
@@ -22,11 +22,23 @@ export function Header() {
     <header className="width-full bg-surface-100 stroke-standard stroke-default border-l-0 border-t-0 border-r-0 sticky top-[0] [z-index:50] lowercase">
       <div className="max-width-[1024px] width-full margin-x-auto padding-x-medium padding-y-small flex items-center justify-between">
 
-        {/* Brand */}
+        {/* Brand + Avatar */}
         <div className="flex items-center gap-small min-width-0">
-          <div className="flex items-center justify-center padding-xxsmall radius-small bg-shift-100 shrink-0">
-            <Icon name="icon-filled-tilt" size="Small" className="content-emphasis" />
-          </div>
+          <button
+            type="button"
+            onClick={() => setIsAvatarDialogOpen(true)}
+            className="group cursor-pointer p-0 border-0 bg-transparent outline-none flex items-center shrink-0"
+            title="switch profile picture"
+          >
+            <Avatar
+              src={avatarSrc}
+              initials={avatarInitials}
+              size="Small"
+              status="InExperience"
+              alt="ashley"
+              className="ring-1 ring-stroke-emphasis group-hover:ring-stroke-default transition-all"
+            />
+          </button>
           <span className="font-extended text-title-medium content-emphasis text-truncate-end">
             ashley
           </span>

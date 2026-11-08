@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { themePresets, FoundationThemePreset } from "../data/themes";
 import { generateProceduralPalette } from "../utils/color";
+import { avatarPresets } from "../data/avatars";
 
 export type ThemeMode = "auto" | "light" | "dark";
 
@@ -19,11 +20,18 @@ interface ThemeContextType {
   setIsCustomColorOpen: (open: boolean) => void;
   activePreset: FoundationThemePreset;
   resetTheme: () => void;
+  avatarId: string;
+  avatarSrc?: string;
+  avatarInitials: string;
+  setAvatar: (id: string, customSrc?: string) => void;
+  isAvatarDialogOpen: boolean;
+  setIsAvatarDialogOpen: (open: boolean) => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
 const STORAGE_KEY = "about-theme-config-v4";
+const AVATAR_STORAGE_KEY = "about-avatar-config-v1";
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mode, setModeState] = useState<ThemeMode>(() => {
@@ -72,6 +80,38 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isCustomColorOpen, setIsCustomColorOpen] = useState(false);
+  const [isAvatarDialogOpen, setIsAvatarDialogOpen] = useState(false);
+
+  const [avatarState, setAvatarState] = useState<{ id: string; customSrc?: string }>(() => {
+    try {
+      const saved = localStorage.getItem(AVATAR_STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed.id) return parsed;
+      }
+    } catch {}
+    return { id: "google-1" };
+  });
+
+  const activeAvatarPreset =
+    avatarPresets.find((a) => a.id === avatarState.id) || avatarPresets[0];
+
+  const avatarId = avatarState.id;
+  const avatarSrc =
+    avatarState.id === "custom"
+      ? avatarState.customSrc
+      : activeAvatarPreset?.src;
+  const avatarInitials = activeAvatarPreset?.initials || "AS";
+
+  const setAvatar = (id: string, customSrc?: string) => {
+    setAvatarState({ id, customSrc });
+    try {
+      localStorage.setItem(
+        AVATAR_STORAGE_KEY,
+        JSON.stringify({ id, customSrc })
+      );
+    } catch {}
+  };
 
   // Sync to localStorage
   useEffect(() => {
@@ -203,6 +243,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         setIsCustomColorOpen,
         activePreset,
         resetTheme,
+        avatarId,
+        avatarSrc,
+        avatarInitials,
+        setAvatar,
+        isAvatarDialogOpen,
+        setIsAvatarDialogOpen,
       }}
     >
       {children}

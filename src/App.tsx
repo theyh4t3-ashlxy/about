@@ -8,6 +8,7 @@ import { AnomaliesView } from "./components/AnomaliesView";
 import { MediaView } from "./components/MediaView";
 import { SettingsDialog } from "./components/SettingsDialog";
 import { CustomColorDialog } from "./components/CustomColorDialog";
+import { AvatarDialog } from "./components/AvatarDialog";
 import { ThemeProvider } from "./context/ThemeContext";
 
 export default function App() {
@@ -66,6 +67,7 @@ export default function App() {
 
         <SettingsDialog />
         <CustomColorDialog />
+        <AvatarDialog />
       </div>
     </ThemeProvider>
   );
