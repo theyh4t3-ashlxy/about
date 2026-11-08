@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Dialog,
   DialogContent,
@@ -11,7 +11,7 @@ import {
   Divider,
 } from "@rbx/foundation-ui";
 import { useTheme, ThemeMode } from "../context/ThemeContext";
-import { themePresets, customColorSwatches } from "../data/themes";
+import { themePresets } from "../data/themes";
 
 export function SettingsDialog() {
   const {
@@ -20,27 +20,16 @@ export function SettingsDialog() {
     presetId,
     setPresetId,
     customColor,
-    setCustomColor,
     isCustom,
     isSettingsOpen,
     setIsSettingsOpen,
+    setIsCustomColorOpen,
     resetTheme,
   } = useTheme();
 
-  const [hexInput, setHexInput] = useState(customColor);
-
-  const handleHexChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const val = e.target.value;
-    setHexInput(val);
-    if (/^#[0-9A-Fa-f]{6}$/.test(val) || /^#[0-9A-Fa-f]{3}$/.test(val)) {
-      setCustomColor(val);
-    }
-  };
-
-  const handleColorPickerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const val = e.target.value;
-    setHexInput(val);
-    setCustomColor(val);
+  const handleOpenColorGenerator = () => {
+    setIsSettingsOpen(false);
+    setIsCustomColorOpen(true);
   };
 
   return (
@@ -146,7 +135,7 @@ export function SettingsDialog() {
                     onClick={() => setPresetId(preset.id)}
                     className={`group relative flex items-center gap-small p-2.5 rounded-medium border text-left transition-all cursor-pointer ${
                       isSelected
-                        ? "border-system-emphasis bg-shift-200 shadow-sm"
+                        ? "border-system-emphasis bg-shift-200 shadow-sm ring-1 ring-system-emphasis"
                         : "border-stroke-default bg-surface-0 hover:bg-shift-100 hover:border-stroke-emphasis"
                     }`}
                   >
@@ -170,72 +159,34 @@ export function SettingsDialog() {
 
           <Divider />
 
-          {/* Custom Accent Color */}
-          <div className="flex flex-col gap-small">
-            <div className="flex flex-col gap-xxsmall">
-              <span className="text-title-small content-emphasis font-bold lowercase">
-                custom accent color
-              </span>
-              <p className="text-body-medium content-muted lowercase">
-                applies custom hex code to primary buttons and active accents
-              </p>
-            </div>
-
-            {/* Quick swatches */}
-            <div className="flex items-center flex-wrap gap-small">
-              {customColorSwatches.map((swatch) => {
-                const isSelected =
-                  isCustom &&
-                  customColor.toLowerCase() === swatch.color.toLowerCase();
-                return (
-                  <button
-                    key={swatch.color}
-                    type="button"
-                    onClick={() => {
-                      setHexInput(swatch.color);
-                      setCustomColor(swatch.color);
-                    }}
-                    className={`w-7 h-7 rounded-circle border transition-all cursor-pointer ${
-                      isSelected
-                        ? "scale-110 ring-2 ring-system-emphasis ring-offset-2 ring-offset-surface-100 border-white"
-                        : "border-white/20 hover:scale-110 opacity-85 hover:opacity-100"
-                    }`}
-                    style={{ backgroundColor: swatch.color }}
-                    title={swatch.name}
-                  />
-                );
-              })}
-            </div>
-
-            {/* Hex code input & native color picker */}
-            <div className="flex items-center gap-small p-2 rounded-medium bg-surface-0 border border-stroke-default mt-1">
-              <label
-                className="relative w-7 h-7 rounded-circle overflow-hidden cursor-pointer border border-stroke-default shrink-0 shadow-sm flex items-center justify-center"
+          {/* Custom Theme Popout Trigger */}
+          <div className="p-4 rounded-medium bg-surface-0 border border-stroke-default flex items-center justify-between gap-medium">
+            <div className="flex items-center gap-small min-w-0">
+              <span
+                className="w-8 h-8 rounded-circle border border-stroke-default shrink-0 shadow-sm flex items-center justify-center"
                 style={{ backgroundColor: customColor }}
-                title="open native color wheel"
               >
-                <input
-                  type="color"
-                  value={customColor}
-                  onChange={handleColorPickerChange}
-                  className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
-                />
-              </label>
-
-              <div className="flex-1 min-w-0">
-                <input
-                  type="text"
-                  value={hexInput}
-                  onChange={handleHexChange}
-                  placeholder="#00e5ff"
-                  className="w-full bg-transparent border-none outline-none font-mono text-body-medium content-emphasis lowercase px-1"
-                />
-              </div>
-
-              <span className="text-caption-small font-mono px-2 py-0.5 rounded bg-shift-200 border border-stroke-default content-muted lowercase">
-                hex
+                {isCustom && <Icon name="icon-regular-check" size="Small" className="text-white drop-shadow" />}
               </span>
+              <div className="flex flex-col min-w-0">
+                <span className="text-body-medium font-bold content-emphasis lowercase">
+                  custom canvas color
+                </span>
+                <p className="text-caption-large content-muted lowercase truncate">
+                  {isCustom ? `active: ${customColor}` : "procedural color wheel & hex generator"}
+                </p>
+              </div>
             </div>
+
+            <Button
+              variant={isCustom ? "Emphasis" : "Standard"}
+              size="Small"
+              onClick={handleOpenColorGenerator}
+              className="flex items-center gap-xsmall shrink-0"
+            >
+              <span>{isCustom ? "edit custom" : "color wheel"}</span>
+              <Icon name="icon-regular-arrow-up-right-from-square" size="Small" />
+            </Button>
           </div>
         </DialogBody>
 

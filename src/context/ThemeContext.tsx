@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { themePresets, FoundationThemePreset } from "../data/themes";
+import { generateProceduralPalette } from "../utils/color";
 
 export type ThemeMode = "auto" | "light" | "dark";
 
@@ -14,13 +15,15 @@ interface ThemeContextType {
   setIsCustom: (custom: boolean) => void;
   isSettingsOpen: boolean;
   setIsSettingsOpen: (open: boolean) => void;
+  isCustomColorOpen: boolean;
+  setIsCustomColorOpen: (open: boolean) => void;
   activePreset: FoundationThemePreset;
   resetTheme: () => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
-const STORAGE_KEY = "about-theme-config-v3";
+const STORAGE_KEY = "about-theme-config-v4";
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mode, setModeState] = useState<ThemeMode>(() => {
@@ -68,6 +71,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   });
 
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isCustomColorOpen, setIsCustomColorOpen] = useState(false);
 
   // Sync to localStorage
   useEffect(() => {
@@ -111,22 +115,22 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         body.classList.add("light-theme");
       }
 
-      // 2. Custom color vs Foundation Presets
+      // 2. Custom color procedural engine vs Foundation Presets
       if (isCustom) {
-        // Custom hex strictly applies to primary buttons and active accents
-        setCssVar("--color-system-emphasis", customColor);
-        setCssVar("--color-action-emphasis-background", customColor);
-        setCssVar("--accent-color", customColor);
+        // Procedurally generate full site canvas, cards, borders, and accents
+        const palette = generateProceduralPalette(customColor, isDarkActive);
 
-        // Clear custom surface overrides so shift tokens and surfaces remain authentic
-        clearVar("--color-surface-0");
-        clearVar("--color-surface-100");
-        clearVar("--color-surface-200");
-        clearVar("--color-stroke-default");
-        clearVar("--color-stroke-emphasis");
-        clearVar("--color-content-emphasis");
-        clearVar("--color-content-default");
-        clearVar("--color-content-muted");
+        setCssVar("--color-surface-0", palette.surface0);
+        setCssVar("--color-surface-100", palette.surface100);
+        setCssVar("--color-surface-200", palette.surface200);
+        setCssVar("--color-stroke-default", palette.strokeDefault);
+        setCssVar("--color-stroke-emphasis", palette.strokeEmphasis);
+        setCssVar("--color-system-emphasis", palette.accent);
+        setCssVar("--color-action-emphasis-background", palette.accent);
+        setCssVar("--accent-color", palette.accent);
+        setCssVar("--color-content-emphasis", palette.contentEmphasis);
+        setCssVar("--color-content-default", palette.contentDefault);
+        setCssVar("--color-content-muted", palette.contentMuted);
       } else {
         // Foundation Presets
         const preset =
@@ -143,6 +147,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         setCssVar("--color-action-emphasis-background", preset.accentColor);
         setCssVar("--accent-color", preset.accentColor);
 
+        // Clear custom procedural overrides to restore standard token hierarchy for presets
         clearVar("--color-stroke-default");
         clearVar("--color-stroke-emphasis");
         clearVar("--color-content-emphasis");
@@ -194,6 +199,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         setIsCustom,
         isSettingsOpen,
         setIsSettingsOpen,
+        isCustomColorOpen,
+        setIsCustomColorOpen,
         activePreset,
         resetTheme,
       }}
