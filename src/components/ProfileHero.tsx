@@ -13,7 +13,7 @@ export function ProfileHero() {
           <button
             type="button"
             onClick={() => setIsAvatarDialogOpen(true)}
-            className="group relative cursor-pointer rounded-full p-0 border-0 bg-transparent outline-none focus-visible:ring-2 focus-visible:ring-stroke-emphasis shrink-0 transition-transform active:scale-95"
+            className="group relative cursor-pointer rounded-full p-0 border-0 bg-transparent outline-none focus-visible:outline-focus shrink-0 transition-transform active:scale-95"
             aria-label="switch profile picture"
             title="click to change profile picture"
           >
@@ -23,7 +23,7 @@ export function ProfileHero() {
               size="XLarge"
               status="InExperience"
               alt="Ashley avatar"
-              className="ring-2 ring-stroke-emphasis group-hover:ring-stroke-default transition-all"
+              className="shrink-0"
             />
             <div className="absolute inset-0 rounded-full bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <Icon name="icon-regular-photo-camera" size="Small" className="text-white drop-shadow" />

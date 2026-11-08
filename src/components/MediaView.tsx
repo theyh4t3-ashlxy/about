@@ -67,7 +67,7 @@ export function MediaView() {
                 <div className="width-full height-full relative flex items-center justify-center">
                   <video src={item.src} muted preload="metadata" className="width-full height-full object-cover opacity-80" />
                   <div className="absolute inset-[0] flex items-center justify-center bg-[rgba(0,0,0,0.4)] group-hover/interactable:bg-[rgba(0,0,0,0.2)] transition-colors">
-                    <div className="padding-small radius-circle bg-surface-100 text-content-emphasis shadow-transient-high">
+                    <div className="padding-small radius-circle bg-surface-100 content-emphasis shadow-transient-high">
                       <Icon name="icon-regular-circle-play" size="Medium" />
                     </div>
                   </div>

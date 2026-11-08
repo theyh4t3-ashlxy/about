@@ -51,10 +51,10 @@ export function AvatarDialog() {
                   key={preset.id}
                   type="button"
                   onClick={() => setAvatar(preset.id)}
-                  className={`foundation-web-button relative clip group/interactable focus-visible:outline-focus cursor-pointer flex items-center justify-between width-full padding-medium radius-medium stroke-standard text-left transition-all ${
+                  className={`foundation-web-button relative clip group/interactable focus-visible:outline-focus cursor-pointer flex items-center justify-between width-full padding-medium radius-medium stroke-standard text-left ${
                     isSelected
                       ? "bg-surface-200 stroke-emphasis"
-                      : "bg-surface-100 hover:bg-shift-100 stroke-default"
+                      : "bg-surface-100 stroke-default"
                   }`}
                 >
                   <div
@@ -68,9 +68,9 @@ export function AvatarDialog() {
                       src={preset.src}
                       initials={preset.initials || "AS"}
                       size="Medium"
-                      status="InExperience"
+                      hasBorder={true}
                       alt={preset.name}
-                      className="shrink-0 ring-1 ring-stroke-default"
+                      className="shrink-0"
                     />
 
                     <div className="flex flex-col min-width-0">
@@ -84,11 +84,11 @@ export function AvatarDialog() {
                   </div>
 
                   {isSelected ? (
-                    <div className="relative z-10 shrink-0 text-system-success">
+                    <div className="relative z-10 shrink-0 content-system-success">
                       <Icon name="icon-regular-circle-check" size="Small" />
                     </div>
                   ) : (
-                    <div className="relative z-10 shrink-0 text-content-sub opacity-40 group-hover/interactable:opacity-100">
+                    <div className="relative z-10 shrink-0 content-muted opacity-40 group-hover/interactable:opacity-100 transition-opacity">
                       <Icon name="icon-regular-circle" size="Small" />
                     </div>
                   )}

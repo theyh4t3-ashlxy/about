@@ -34,9 +34,9 @@ export function Header() {
               src={avatarSrc}
               initials={avatarInitials}
               size="Small"
-              status="InExperience"
+              hasBorder={true}
               alt="ashley"
-              className="ring-1 ring-stroke-emphasis group-hover:ring-stroke-default transition-all"
+              className="shrink-0"
             />
           </button>
           <span className="font-extended text-title-medium content-emphasis text-truncate-end">
