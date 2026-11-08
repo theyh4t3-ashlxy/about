@@ -1,5 +1,5 @@
 import React from "react";
-import { Tabs, TabsList, TabsTrigger, TabsContent, Icon } from "@rbx/foundation-ui";
+import { Tabs, TabsList, TabsTrigger, TabsContent, Icon, Badge } from "@rbx/foundation-ui";
 import { Header } from "./components/Header";
 import { ProfileHero } from "./components/ProfileHero";
 import { TelemetryView } from "./components/TelemetryView";
@@ -17,11 +17,11 @@ export default function App() {
       <div className="min-h-screen bg-surface-0 content-default flex flex-col font-sans selection:bg-system-emphasis/30 transition-colors duration-200">
         <Header />
 
-        <main className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-8 flex flex-col gap-large">
+        <main className="flex-1 max-width-[1024px] width-full margin-x-auto padding-x-medium sm:padding-x-large padding-y-xlarge flex flex-col gap-large">
           <ProfileHero />
 
-          <Tabs defaultValue="telemetry" size="Medium" variant="Contained" fitBehavior="Fit" className="w-full">
-            <TabsList className="mb-6">
+          <Tabs defaultValue="telemetry" size="Medium" variant="Contained" fitBehavior="Fit" className="width-full">
+            <TabsList className="margin-bottom-large">
               <TabsTrigger value="telemetry">
                 <Icon name="icon-regular-computer-monitor" size="Small" />
                 <span>system & hardware</span>
@@ -37,9 +37,13 @@ export default function App() {
               <TabsTrigger value="bugs">
                 <Icon name="icon-regular-bug" size="Small" />
                 <span>known issues</span>
-                <span className="ml-1 px-1.5 py-0.5 rounded-small text-caption-small bg-system-warning/20 content-system-warning font-mono">
-                  1 open
-                </span>
+                <Badge
+                  label="1 open"
+                  size="XSmall"
+                  variant="Warning"
+                  shape="Box"
+                  className="margin-left-xsmall font-mono"
+                />
               </TabsTrigger>
             </TabsList>
 
@@ -61,7 +65,7 @@ export default function App() {
           </Tabs>
         </main>
 
-        <footer className="w-full border-t border-stroke-default bg-surface-100 py-6 text-center text-caption-large font-mono content-muted">
+        <footer className="width-full stroke-standard stroke-default border-x-0 border-b-0 bg-surface-100 padding-y-large text-center text-caption-large font-mono content-muted">
           thinkpad t16 · nixos 26.11
         </footer>
 

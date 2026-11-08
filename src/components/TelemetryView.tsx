@@ -37,7 +37,7 @@ export function TelemetryView() {
     <div className="flex flex-col gap-large">
       {/* Environment section */}
       <div>
-        <div className="mb-4">
+        <div className="margin-bottom-medium">
           <h2 className="text-title-medium content-emphasis font-bold lowercase">
             desktop environment
           </h2>
@@ -48,21 +48,21 @@ export function TelemetryView() {
           {environmentSpecs.map((spec, i) => (
             <div
               key={i}
-              className="bg-surface-100 border border-stroke-default hover:border-stroke-emphasis rounded-large p-5 transition-colors flex flex-col gap-small"
+              className="bg-surface-100 stroke-standard stroke-default hover:stroke-emphasis radius-large padding-large transition-colors flex flex-col gap-small"
             >
               <div className="flex items-start justify-between gap-small">
-                <div className="flex items-center gap-small min-w-0">
-                  <div className="p-2 rounded-small bg-surface-200 shrink-0">
+                <div className="flex items-center gap-small min-width-0">
+                  <div className="padding-small radius-small bg-surface-200 shrink-0">
                     <Icon name={getEnvIcon(i) as any} size="Medium" className="content-emphasis" />
                   </div>
-                  <div className="flex flex-col min-w-0">
+                  <div className="flex flex-col min-width-0">
                     <div className="flex items-center gap-xsmall flex-wrap">
-                      <span className="text-title-small font-mono content-emphasis font-bold truncate">
+                      <span className="text-title-small font-mono content-emphasis font-bold text-truncate-end">
                         {spec.title}
                       </span>
                       {spec.badge && <Badge label={spec.badge} size="XSmall" variant="Standard" />}
                     </div>
-                    <span className="text-caption-large font-mono content-muted truncate mt-0.5">
+                    <span className="text-caption-large font-mono content-muted text-truncate-end margin-top-xxsmall">
                       {spec.subtitle}
                     </span>
                   </div>
@@ -83,11 +83,11 @@ export function TelemetryView() {
               </div>
 
               {spec.details && (
-                <div className="mt-2 pt-3 border-t border-stroke-default/60 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 font-mono text-caption-large">
+                <div className="margin-top-small padding-top-small stroke-standard stroke-default border-x-0 border-b-0 grid grid-cols-1 sm:grid-cols-2 gap-x-large gap-y-xxsmall font-mono text-caption-large">
                   {spec.details.map((detail, idx) => (
-                    <div key={idx} className="flex items-center justify-between py-0.5 border-b border-stroke-default/30">
+                    <div key={idx} className="flex items-center justify-between padding-y-xxsmall stroke-thin stroke-default border-x-0 border-t-0">
                       <span className="content-muted">{detail.label}</span>
-                      <span className="content-emphasis font-medium truncate ml-2">{detail.value}</span>
+                      <span className="content-emphasis font-medium text-truncate-end margin-left-small">{detail.value}</span>
                     </div>
                   ))}
                 </div>
@@ -99,7 +99,7 @@ export function TelemetryView() {
 
       {/* Processor & silicon section */}
       <div>
-        <div className="mb-4">
+        <div className="margin-bottom-medium">
           <h2 className="text-title-medium content-emphasis font-bold lowercase">
             processor & silicon
           </h2>
@@ -110,21 +110,21 @@ export function TelemetryView() {
           {siliconSpecs.map((spec, i) => (
             <div
               key={i}
-              className="bg-surface-100 border border-stroke-default hover:border-stroke-emphasis rounded-large p-5 transition-colors flex flex-col gap-small"
+              className="bg-surface-100 stroke-standard stroke-default hover:stroke-emphasis radius-large padding-large transition-colors flex flex-col gap-small"
             >
               <div className="flex items-start justify-between gap-small">
-                <div className="flex items-center gap-small min-w-0">
-                  <div className="p-2 rounded-small bg-surface-200 shrink-0">
+                <div className="flex items-center gap-small min-width-0">
+                  <div className="padding-small radius-small bg-surface-200 shrink-0">
                     <Icon name={getSiliconIcon(i) as any} size="Medium" className="content-emphasis" />
                   </div>
-                  <div className="flex flex-col min-w-0">
+                  <div className="flex flex-col min-width-0">
                     <div className="flex items-center gap-xsmall flex-wrap">
-                      <span className="text-title-small font-mono content-emphasis font-bold truncate">
+                      <span className="text-title-small font-mono content-emphasis font-bold text-truncate-end">
                         {spec.title}
                       </span>
                       {spec.badge && <Badge label={spec.badge} size="XSmall" variant="Emphasis" />}
                     </div>
-                    <span className="text-caption-large font-mono content-muted truncate mt-0.5">
+                    <span className="text-caption-large font-mono content-muted text-truncate-end margin-top-xxsmall">
                       {spec.subtitle}
                     </span>
                   </div>
@@ -145,11 +145,11 @@ export function TelemetryView() {
               </div>
 
               {spec.details && (
-                <div className="mt-2 pt-3 border-t border-stroke-default/60 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 font-mono text-caption-large">
+                <div className="margin-top-small padding-top-small stroke-standard stroke-default border-x-0 border-b-0 grid grid-cols-1 sm:grid-cols-2 gap-x-large gap-y-xxsmall font-mono text-caption-large">
                   {spec.details.map((detail, idx) => (
-                    <div key={idx} className="flex items-center justify-between py-0.5 border-b border-stroke-default/30">
+                    <div key={idx} className="flex items-center justify-between padding-y-xxsmall stroke-thin stroke-default border-x-0 border-t-0">
                       <span className="content-muted">{detail.label}</span>
-                      <span className="content-emphasis font-medium truncate ml-2">{detail.value}</span>
+                      <span className="content-emphasis font-medium text-truncate-end margin-left-small">{detail.value}</span>
                     </div>
                   ))}
                 </div>

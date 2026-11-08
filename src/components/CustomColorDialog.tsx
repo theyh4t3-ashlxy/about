@@ -81,7 +81,7 @@ export function CustomColorDialog() {
                   type="color"
                   value={customColor}
                   onChange={handleColorPickerChange}
-                  className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
+                  className="absolute inset-[0] opacity-0 cursor-pointer width-full height-full"
                 />
               </label>
 
@@ -136,7 +136,7 @@ export function CustomColorDialog() {
           <div className="bg-shift-100 padding-medium radius-medium flex flex-col gap-small">
             <span className="text-label-medium content-sub lowercase">live generated palette</span>
 
-            <div className="grid grid-cols-4 gap-small pt-1">
+            <div className="grid grid-cols-4 gap-small padding-top-xxsmall">
               <div className="flex flex-col items-center gap-small">
                 <div className="width-full height-800 radius-small stroke-standard stroke-default bg-surface-0 shadow-sm" title="canvas (surface-0)" />
                 <span className="text-caption-small content-muted lowercase">canvas</span>

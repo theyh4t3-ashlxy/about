@@ -27,12 +27,13 @@ export function AvatarDialog() {
       open={isAvatarDialogOpen}
       onOpenChange={setIsAvatarDialogOpen}
     >
-      <DialogContent className="relative radius-large bg-surface-100 stroke-muted stroke-standard foundation-web-dialog-content shadow-transient-high max-width-[480px] width-full">
+      <DialogContent className="relative radius-large bg-surface-100 stroke-muted stroke-standard foundation-web-dialog-content shadow-transient-high">
+
         {/* Content Wrapper */}
         <div className="padding-x-xlarge padding-top-xlarge padding-bottom-large text-body-medium flex flex-col gap-large font-builder lowercase">
-          
-          {/* Header */}
-          <div className="flex flex-col gap-xxsmall">
+
+          {/* Header - Added padding-right to clear the close button */}
+          <div className="flex flex-col gap-xxsmall padding-right-[42px]">
             <DialogTitle className="text-heading-small margin-none content-emphasis lowercase font-extended">
               which ashley do you want?
             </DialogTitle>
@@ -41,7 +42,7 @@ export function AvatarDialog() {
             </p>
           </div>
 
-          {/* Preset Avatars List (Roblox Switch Accounts Style) */}
+          {/* Preset Avatars List */}
           <div className="flex flex-col gap-small">
             {avatarPresets.map((preset) => {
               const isSelected = avatarId === preset.id;
@@ -51,47 +52,52 @@ export function AvatarDialog() {
                   key={preset.id}
                   type="button"
                   onClick={() => setAvatar(preset.id)}
-                  className={`foundation-web-button relative clip group/interactable focus-visible:outline-focus cursor-pointer flex items-center justify-between width-full padding-medium radius-medium stroke-standard text-left ${
-                    isSelected
-                      ? "bg-surface-200 stroke-emphasis"
-                      : "bg-surface-100 stroke-default"
-                  }`}
+                  data-state={isSelected ? "checked" : "unchecked"}
+                  className="foundation-web-button relative clip group/interactable focus-visible:outline-focus cursor-pointer flex flex-row items-center justify-between width-full padding-small radius-medium stroke-standard stroke-default bg-none data-[state=checked]:bg-shift-200 text-align-x-left transition-colors"
                 >
+                  {/* State Layer */}
                   <div
                     aria-hidden="true"
                     data-testid="foundation-web-state-layer"
                     className="absolute inset-[0] transition-colors group-hover/interactable:bg-[var(--color-state-hover)] group-active/interactable:bg-[var(--color-state-press)]"
                   />
 
-                  <div className="flex items-center gap-medium min-width-0 relative z-10">
-                    <Avatar
-                      src={preset.src}
-                      initials={preset.initials || "AS"}
-                      size="Medium"
-                      hasBorder={true}
-                      alt={preset.name}
-                      className="shrink-0"
-                    />
+                  {/* Left Side: Avatar & Text */}
+                  <div className="flex flex-row items-center gap-medium min-width-0 relative z-10">
 
-                    <div className="flex flex-col min-width-0">
+                    {/* Avatar Container */}
+                    <div className="size-1000 shrink-0 radius-circle clip flex items-center justify-center bg-shift-100 stroke-standard stroke-default">
+                      <Avatar
+                        src={preset.src}
+                        initials={preset.initials || "AS"}
+                        size="Medium"
+                        alt={preset.name}
+                        className="object-cover width-full height-full"
+                      />
+                    </div>
+
+                    {/* Text Container */}
+                    <div className="flex flex-col items-start min-width-0">
                       <span className="text-label-medium font-extended content-emphasis text-truncate-end">
                         {preset.name}
                       </span>
-                      <span className="text-caption-small font-mono content-muted text-truncate-end">
+                      <span className="text-caption-small content-muted text-truncate-end">
                         {preset.subtitle}
                       </span>
                     </div>
                   </div>
 
-                  {isSelected ? (
-                    <div className="relative z-10 shrink-0 content-system-success">
-                      <Icon name="icon-regular-circle-check" size="Small" />
+                  {/* Right Side: High-Contrast Radio Button */}
+                  <div className="relative z-10 shrink-0 flex items-center justify-center padding-x-small">
+                    <div
+                      data-state={isSelected ? "checked" : "unchecked"}
+                      className="size-500 radius-circle stroke-standard flex items-center justify-center transition-colors data-[state=checked]:stroke-emphasis data-[state=unchecked]:stroke-default"
+                    >
+                      {isSelected && (
+                        <div className="size-250 radius-circle bg-system-emphasis shadow-sm" />
+                      )}
                     </div>
-                  ) : (
-                    <div className="relative z-10 shrink-0 content-muted opacity-40 group-hover/interactable:opacity-100 transition-opacity">
-                      <Icon name="icon-regular-circle" size="Small" />
-                    </div>
-                  )}
+                  </div>
                 </button>
               );
             })}

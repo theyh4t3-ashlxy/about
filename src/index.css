@@ -131,12 +131,7 @@ body {
   gap: var(--size-100, 8px) !important;
 }
 
-/* Foundation stroke fallbacks: ensures strokes never default to white currentColor */
+/* Foundation stroke fallbacks: ensures standard strokes default safely to stroke-default token */
 .stroke-standard:not([class*="stroke-emphasis"]):not([class*="stroke-muted"]):not([class*="stroke-system"]):not([class*="stroke-contrast"]) {
   border-color: var(--color-stroke-default);
-}
-
-.border-stroke-default,
-.border-stroke-standard {
-  border-color: var(--color-stroke-default) !important;
 }

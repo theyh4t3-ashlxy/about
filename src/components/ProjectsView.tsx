@@ -48,7 +48,7 @@ export function ProjectsView() {
 
   return (
     <div className="flex flex-col gap-medium">
-      <div className="mb-2">
+      <div className="margin-bottom-small">
         <h2 className="text-title-medium content-emphasis font-bold lowercase">
           projects
         </h2>
@@ -63,7 +63,7 @@ export function ProjectsView() {
             key={project.id}
             variant="Standard"
             density="Default"
-            className="bg-surface-100 border border-stroke-default hover:border-stroke-emphasis transition-all duration-150 flex flex-col justify-between cursor-pointer group rounded-large"
+            className="bg-surface-100 stroke-standard stroke-default hover:stroke-emphasis radius-large flex flex-col justify-between cursor-pointer group transition-colors"
             onClick={() => setSelectedProject(project)}
             leading={<Icon name={getProjectIcon(project.id) as any} size="Medium" className="content-emphasis group-hover:scale-110 transition-transform" />}
             title={
@@ -86,8 +86,8 @@ export function ProjectsView() {
               </span>
             }
           >
-            <div className="pt-medium mt-auto flex items-center justify-between border-t border-stroke-default/60">
-              <span className="text-caption-large font-mono content-subtle">
+            <div className="padding-top-medium margin-top-auto flex items-center justify-between stroke-standard stroke-default border-x-0 border-b-0">
+              <span className="text-caption-large font-mono content-sub">
                 {project.localOnly ? "local repository" : "github.com"}
               </span>
 
@@ -133,10 +133,10 @@ export function ProjectsView() {
           open={!!selectedProject}
           onOpenChange={(open) => !open && setSelectedProject(null)}
         >
-          <DialogContent className="max-w-2xl bg-surface-100 border border-stroke-default rounded-large overflow-hidden shadow-2xl">
-            <DialogHeroMedia className="bg-surface-200/50 border-b border-stroke-default px-6 py-4 flex items-center pr-16">
+          <DialogContent className="max-width-[672px] clip shadow-transient-high">
+            <DialogHeroMedia className="bg-surface-200/50 stroke-standard stroke-default border-x-0 border-t-0 padding-x-xlarge padding-y-medium flex items-center padding-right-[64px]">
               <div className="flex items-center gap-small">
-                <div className="p-2 rounded-small bg-surface-200">
+                <div className="padding-small radius-small bg-surface-200">
                   <Icon name={getProjectIcon(selectedProject.id) as any} size="Large" className="content-emphasis" />
                 </div>
                 <div>
@@ -150,26 +150,26 @@ export function ProjectsView() {
               </div>
             </DialogHeroMedia>
 
-            <DialogBody className="p-6 flex flex-col gap-medium max-h-[70vh] overflow-y-auto">
+            <DialogBody className="padding-xlarge flex flex-col gap-medium max-height-[70vh] overflow-y-auto">
               {selectedProject.previewMedia && (
-                <div className="overflow-hidden rounded-medium border border-stroke-default bg-surface-0 shadow-sm flex flex-col items-center">
-                  <div className="w-full bg-surface-200/60 p-3 flex items-center justify-center">
+                <div className="clip radius-medium stroke-standard stroke-default bg-surface-0 shadow-sm flex flex-col items-center">
+                  <div className="width-full bg-surface-200/60 padding-medium flex items-center justify-center">
                     {selectedProject.previewMedia.type === "video" ? (
                       <video
                         src={selectedProject.previewMedia.src}
                         controls
-                        className="max-h-60 max-w-full rounded-small object-contain shadow-sm bg-black"
+                        className="max-height-[240px] max-width-full radius-small object-contain shadow-sm bg-black"
                       />
                     ) : (
                       <img
                         src={selectedProject.previewMedia.src}
                         alt={selectedProject.previewMedia.caption}
-                        className="max-h-60 max-w-full rounded-small object-contain shadow-sm"
+                        className="max-height-[240px] max-width-full radius-small object-contain shadow-sm"
                       />
                     )}
                   </div>
-                  <div className="w-full px-3.5 py-2 bg-surface-100 border-t border-stroke-default flex items-center justify-between text-caption-large font-mono content-muted">
-                    <span className="truncate mr-2">{selectedProject.previewMedia.caption}</span>
+                  <div className="width-full padding-x-medium padding-y-small bg-surface-100 stroke-standard stroke-default border-x-0 border-b-0 flex items-center justify-between text-caption-large font-mono content-muted">
+                    <span className="text-truncate-end margin-right-small">{selectedProject.previewMedia.caption}</span>
                     <Badge label="preview" size="Small" variant="Standard" />
                   </div>
                 </div>
@@ -185,7 +185,7 @@ export function ProjectsView() {
               </div>
 
               {selectedProject.quote && (
-                <div className="p-3.5 rounded-medium bg-surface-0 border-l-4 border-system-emphasis border-stroke-default">
+                <div className="padding-medium radius-medium bg-surface-0 stroke-standard stroke-default border-y-0 border-r-0 border-l-[4px] border-l-[var(--color-system-emphasis)]">
                   <p className="text-body-medium italic content-muted font-mono leading-relaxed">
                     "{selectedProject.quote}"
                   </p>
@@ -210,8 +210,8 @@ export function ProjectsView() {
                   <span className="text-label-small content-muted font-semibold lowercase">
                     run command
                   </span>
-                  <div className="flex items-center justify-between bg-surface-0 border border-stroke-default px-3.5 py-2.5 rounded-medium font-mono text-caption-large">
-                    <code className="content-emphasis select-all break-all mr-3">
+                  <div className="flex items-center justify-between bg-surface-0 stroke-standard stroke-default padding-x-medium padding-y-small radius-medium font-mono text-caption-large">
+                    <code className="content-emphasis select-all break-all margin-right-medium">
                       {selectedProject.commandSnippet}
                     </code>
                     <Button
@@ -233,7 +233,7 @@ export function ProjectsView() {
 
             <Divider />
 
-            <DialogFooter className="px-6 py-4 flex items-center justify-between bg-surface-100">
+            <DialogFooter className="padding-x-xlarge padding-y-medium flex items-center justify-between bg-surface-100">
               <Button
                 variant="Standard"
                 size="Medium"

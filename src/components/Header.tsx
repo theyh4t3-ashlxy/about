@@ -27,7 +27,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setIsAvatarDialogOpen(true)}
-            className="group cursor-pointer p-0 border-0 bg-transparent outline-none flex items-center shrink-0"
+            className="group cursor-pointer padding-none stroke-none bg-none outline-none flex items-center shrink-0"
             title="switch profile picture"
           >
             <Avatar

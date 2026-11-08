@@ -28,7 +28,7 @@ export function AnomaliesView() {
 
   return (
     <div className="flex flex-col gap-medium">
-      <div className="mb-2">
+      <div className="margin-bottom-small">
         <h2 className="text-title-medium content-emphasis font-bold lowercase">
           known issues
         </h2>
@@ -47,7 +47,7 @@ export function AnomaliesView() {
               key={item.id}
               variant="Standard"
               density="Compact"
-              className="bg-surface-100 border border-stroke-default hover:border-stroke-emphasis transition-all duration-150 cursor-pointer group rounded-medium"
+              className="bg-surface-100 stroke-standard stroke-default hover:stroke-emphasis transition-colors cursor-pointer group radius-medium"
               onClick={() => setSelectedAnomaly(item)}
               leading={
                 <StatusIndicator
@@ -97,10 +97,10 @@ export function AnomaliesView() {
           open={!!selectedAnomaly}
           onOpenChange={(open) => !open && setSelectedAnomaly(null)}
         >
-          <DialogContent className="max-w-xl bg-surface-100 border border-stroke-default rounded-large overflow-hidden shadow-2xl">
-            <DialogHeroMedia className="bg-surface-200/50 border-b border-stroke-default px-6 py-4 flex items-center pr-16">
+          <DialogContent className="max-width-[576px] clip shadow-transient-high">
+            <DialogHeroMedia className="bg-surface-200/50 stroke-standard stroke-default border-x-0 border-t-0 padding-x-xlarge padding-y-medium flex items-center padding-right-[64px]">
               <div className="flex items-center gap-small">
-                <div className="p-2 rounded-small bg-surface-200 shrink-0">
+                <div className="padding-small radius-small bg-surface-200 shrink-0">
                   <Icon name="icon-regular-bug" size="Large" className="content-emphasis" />
                 </div>
                 <div>
@@ -120,14 +120,14 @@ export function AnomaliesView() {
                       {selectedAnomaly.title}
                     </span>
                   </div>
-                  <p className="text-caption-large font-mono content-muted mt-0.5">
+                  <p className="text-caption-large font-mono content-muted margin-top-xxsmall">
                     status: {selectedAnomaly.status}
                   </p>
                 </div>
               </div>
             </DialogHeroMedia>
 
-            <DialogBody className="p-6 flex flex-col gap-medium">
+            <DialogBody className="padding-xlarge flex flex-col gap-medium">
               <div className="flex flex-col gap-xxsmall">
                 <DialogTitle className="text-heading-small content-emphasis font-extended lowercase">
                   overview
@@ -138,7 +138,7 @@ export function AnomaliesView() {
               </div>
 
               {selectedAnomaly.affectedComponent && (
-                <div className="p-3.5 rounded-medium bg-surface-0 border border-stroke-default flex flex-col gap-xxsmall">
+                <div className="padding-medium radius-medium bg-surface-0 stroke-standard stroke-default flex flex-col gap-xxsmall">
                   <span className="text-label-small content-muted font-semibold lowercase">
                     affected component
                   </span>
@@ -149,11 +149,11 @@ export function AnomaliesView() {
               )}
 
               {selectedAnomaly.postmortem && (
-                <div className="p-3.5 rounded-medium bg-surface-0 border-l-4 border-system-emphasis border-stroke-default">
-                  <span className="text-label-small content-muted font-semibold lowercase block mb-1">
+                <div className="padding-medium radius-medium bg-surface-0 stroke-standard stroke-default border-y-0 border-r-0 border-l-[4px] border-l-[var(--color-system-emphasis)]">
+                  <span className="text-label-small content-muted font-semibold lowercase block margin-bottom-xxsmall">
                     root cause & fix
                   </span>
-                  <p className="text-body-medium content-default font-mono leading-relaxed text-sm">
+                  <p className="text-body-medium content-default font-mono leading-relaxed">
                     {selectedAnomaly.postmortem}
                   </p>
                 </div>
@@ -162,7 +162,7 @@ export function AnomaliesView() {
 
             <Divider />
 
-            <DialogFooter className="px-6 py-4 flex items-center justify-between bg-surface-100">
+            <DialogFooter className="padding-x-xlarge padding-y-medium flex items-center justify-between bg-surface-100">
               <Button
                 variant="Standard"
                 size="Medium"
