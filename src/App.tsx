@@ -16,62 +16,48 @@ export default function App() {
       <div className="min-h-screen bg-surface-0 content-default flex flex-col font-sans selection:bg-system-emphasis/30 transition-colors duration-200">
         <Header />
 
-        <main className="flex-1 max-w-5xl w-full mx-auto px-4 py-8 flex flex-col gap-large">
+        <main className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-8 flex flex-col gap-large">
           <ProfileHero />
 
-          <div className="bg-surface-100 rounded-large border border-stroke-default p-6 shadow-sm">
-            <Tabs defaultValue="telemetry" size="Medium" variant="Contained">
-              <TabsList className="bg-surface-0 border border-stroke-default p-1.5 rounded-medium mb-6 flex flex-wrap gap-xsmall">
-                <TabsTrigger
-                  value="telemetry"
-                  className="px-4 py-2 rounded-small text-label-medium content-muted data-[state=active]:content-emphasis data-[state=active]:bg-surface-200 transition-all cursor-pointer flex items-center gap-xsmall"
-                >
-                  <Icon name="icon-regular-computer-monitor" size="Small" />
-                  <span>system & hardware</span>
-                </TabsTrigger>
-                <TabsTrigger
-                  value="projects"
-                  className="px-4 py-2 rounded-small text-label-medium content-muted data-[state=active]:content-emphasis data-[state=active]:bg-surface-200 transition-all cursor-pointer flex items-center gap-xsmall"
-                >
-                  <Icon name="icon-regular-hammer-code" size="Small" />
-                  <span>projects</span>
-                </TabsTrigger>
-                <TabsTrigger
-                  value="media"
-                  className="px-4 py-2 rounded-small text-label-medium content-muted data-[state=active]:content-emphasis data-[state=active]:bg-surface-200 transition-all cursor-pointer flex items-center gap-xsmall"
-                >
-                  <Icon name="icon-regular-photo-camera" size="Small" />
-                  <span>captures</span>
-                </TabsTrigger>
-                <TabsTrigger
-                  value="bugs"
-                  className="px-4 py-2 rounded-small text-label-medium content-muted data-[state=active]:content-emphasis data-[state=active]:bg-surface-200 transition-all cursor-pointer flex items-center gap-xsmall"
-                >
-                  <Icon name="icon-regular-bug" size="Small" />
-                  <span>known issues</span>
-                  <span className="px-1.5 py-0.5 rounded-full text-caption-small bg-system-warning/20 content-system-warning font-mono">
-                    1 open
-                  </span>
-                </TabsTrigger>
-              </TabsList>
+          <Tabs defaultValue="telemetry" size="Medium" variant="Contained" fitBehavior="Fit" className="w-full">
+            <TabsList className="mb-6">
+              <TabsTrigger value="telemetry">
+                <Icon name="icon-regular-computer-monitor" size="Small" />
+                <span>system & hardware</span>
+              </TabsTrigger>
+              <TabsTrigger value="projects">
+                <Icon name="icon-regular-hammer-code" size="Small" />
+                <span>projects</span>
+              </TabsTrigger>
+              <TabsTrigger value="media">
+                <Icon name="icon-regular-photo-camera" size="Small" />
+                <span>captures</span>
+              </TabsTrigger>
+              <TabsTrigger value="bugs">
+                <Icon name="icon-regular-bug" size="Small" />
+                <span>known issues</span>
+                <span className="ml-1 px-1.5 py-0.5 rounded-small text-caption-small bg-system-warning/20 content-system-warning font-mono">
+                  1 open
+                </span>
+              </TabsTrigger>
+            </TabsList>
 
-              <TabsContent value="telemetry" className="outline-none focus:outline-none">
-                <TelemetryView />
-              </TabsContent>
+            <TabsContent value="telemetry" className="outline-none focus:outline-none">
+              <TelemetryView />
+            </TabsContent>
 
-              <TabsContent value="projects" className="outline-none focus:outline-none">
-                <ProjectsView />
-              </TabsContent>
+            <TabsContent value="projects" className="outline-none focus:outline-none">
+              <ProjectsView />
+            </TabsContent>
 
-              <TabsContent value="media" className="outline-none focus:outline-none">
-                <MediaView />
-              </TabsContent>
+            <TabsContent value="media" className="outline-none focus:outline-none">
+              <MediaView />
+            </TabsContent>
 
-              <TabsContent value="bugs" className="outline-none focus:outline-none">
-                <AnomaliesView />
-              </TabsContent>
-            </Tabs>
-          </div>
+            <TabsContent value="bugs" className="outline-none focus:outline-none">
+              <AnomaliesView />
+            </TabsContent>
+          </Tabs>
         </main>
 
         <footer className="w-full border-t border-stroke-default bg-surface-100 py-6 text-center text-caption-large font-mono content-muted">

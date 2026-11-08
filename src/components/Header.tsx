@@ -31,7 +31,7 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-small sm:gap-medium text-caption-large content-muted shrink-0">
-          <div className="flex items-center gap-xsmall font-mono bg-surface-0 px-3 py-1 rounded-circle border border-stroke-default shrink-0">
+          <div className="flex items-center gap-xsmall font-mono bg-shift-100 px-2.5 py-1 rounded-small border border-stroke-default shrink-0">
             <StatusIndicator variant="Dot" color="Success" size="Small" />
             <span className="content-default">online</span>
             <span className="content-subtle">|</span>
@@ -39,11 +39,11 @@ export function Header() {
           </div>
 
           <div className="hidden md:flex items-center gap-small font-mono shrink-0">
-            <span className="bg-surface-0 px-2.5 py-1 rounded-small border border-stroke-default content-default flex items-center gap-xsmall">
+            <span className="bg-shift-100 px-2.5 py-1 rounded-small border border-stroke-default content-default flex items-center gap-xsmall">
               <Icon name="icon-regular-lightning-bolt" size="XSmall" className="content-system-emphasis" />
               <span>38% juice</span>
             </span>
-            <span className="bg-surface-0 px-2.5 py-1 rounded-small border border-stroke-default content-default flex items-center gap-xsmall">
+            <span className="bg-shift-100 px-2.5 py-1 rounded-small border border-stroke-default content-default flex items-center gap-xsmall">
               <Icon name="icon-regular-speedometer" size="XSmall" className="content-system-warning" />
               <span>52°c</span>
             </span>

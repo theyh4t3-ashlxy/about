@@ -47,7 +47,7 @@ export function AnomaliesView() {
               key={item.id}
               variant="Standard"
               density="Compact"
-              className="border border-stroke-default hover:border-stroke-emphasis transition-all duration-150 cursor-pointer group"
+              className="bg-surface-100 border border-stroke-default hover:border-stroke-emphasis transition-all duration-150 cursor-pointer group rounded-medium"
               onClick={() => setSelectedAnomaly(item)}
               leading={
                 <StatusIndicator
@@ -97,8 +97,8 @@ export function AnomaliesView() {
           open={!!selectedAnomaly}
           onOpenChange={(open) => !open && setSelectedAnomaly(null)}
         >
-          <DialogContent className="max-w-xl bg-surface-100 border border-stroke-default rounded-xl overflow-hidden shadow-2xl">
-            <DialogHeroMedia className="bg-surface-0 border-b border-stroke-default px-6 py-4 flex items-center pr-16">
+          <DialogContent className="max-w-xl bg-surface-100 border border-stroke-default rounded-large overflow-hidden shadow-2xl">
+            <DialogHeroMedia className="bg-surface-200/50 border-b border-stroke-default px-6 py-4 flex items-center pr-16">
               <div className="flex items-center gap-small">
                 <div className="p-2 rounded-small bg-surface-200 shrink-0">
                   <Icon name="icon-regular-bug" size="Large" className="content-emphasis" />

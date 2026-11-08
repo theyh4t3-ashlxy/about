@@ -48,7 +48,7 @@ export function MediaView() {
             key={item.id}
             variant="Standard"
             density="Default"
-            className="border border-stroke-default hover:border-stroke-emphasis transition-all duration-150 flex flex-col justify-between cursor-pointer group overflow-hidden"
+            className="bg-surface-100 border border-stroke-default hover:border-stroke-emphasis transition-all duration-150 flex flex-col justify-between cursor-pointer group overflow-hidden rounded-large"
             onClick={() => setSelectedItem(item)}
             title={
               <span className="font-mono text-title-small content-emphasis">
@@ -123,7 +123,7 @@ export function MediaView() {
           open={!!selectedItem}
           onOpenChange={(open) => !open && setSelectedItem(null)}
         >
-          <DialogContent className="max-w-2xl bg-surface-100 border border-stroke-default rounded-xl overflow-hidden shadow-2xl">
+          <DialogContent className="max-w-2xl bg-surface-100 border border-stroke-default rounded-large overflow-hidden shadow-2xl">
             <DialogHeroMedia className="bg-surface-200/50 border-b border-stroke-default p-4 flex items-center justify-center overflow-hidden">
               {selectedItem.type === "video" ? (
                 <video

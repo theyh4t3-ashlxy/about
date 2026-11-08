@@ -1,14 +1,10 @@
 import React from "react";
-import { Avatar, Badge, Button, Card, Icon } from "@rbx/foundation-ui";
+import { Avatar, Badge, Button, Icon } from "@rbx/foundation-ui";
 import { profileData } from "../data/profile";
 
 export function ProfileHero() {
   return (
-    <Card
-      variant="Emphasis"
-      density="Comfortable"
-      className="border border-stroke-default shadow-sm"
-    >
+    <div className="bg-surface-100 border border-stroke-default rounded-large p-6 sm:p-7 transition-colors">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-large">
         <div className="flex items-start sm:items-center gap-medium min-w-0">
           <Avatar
@@ -21,13 +17,15 @@ export function ProfileHero() {
 
           <div className="flex flex-col gap-xxsmall min-w-0">
             <div className="flex flex-wrap items-center gap-small">
-              <h1 className="text-heading-medium font-extended content-emphasis tracking-tight truncate">
+              <h1 className="text-heading-large font-extended content-emphasis tracking-tight truncate lowercase">
                 {profileData.handle}
               </h1>
               <Badge label="in experience" size="Small" variant="Success" />
             </div>
 
             <div className="flex flex-wrap items-center gap-xsmall text-body-medium content-muted pt-0.5">
+              <span className="font-mono content-emphasis font-bold">@theyh4t3-ashlxy</span>
+              <span className="content-subtle">•</span>
               <span className="font-mono content-default">{profileData.deviceTag}</span>
               <span className="content-subtle">•</span>
               <span className="font-mono content-system-emphasis font-semibold">
@@ -44,7 +42,7 @@ export function ProfileHero() {
         <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-small border-t sm:border-t-0 border-stroke-default pt-3 sm:pt-0 shrink-0">
           <Button
             asChild
-            variant="Standard"
+            variant="Emphasis"
             size="Medium"
             className="cursor-pointer"
           >
@@ -54,12 +52,12 @@ export function ProfileHero() {
               rel="noreferrer"
               className="flex items-center gap-xsmall"
             >
-              <span>github</span>
+              <span>github profile</span>
               <Icon name="icon-regular-arrow-up-right-from-square" size="XSmall" />
             </a>
           </Button>
         </div>
       </div>
-    </Card>
+    </div>
   );
 }

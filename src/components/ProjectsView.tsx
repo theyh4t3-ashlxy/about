@@ -63,7 +63,7 @@ export function ProjectsView() {
             key={project.id}
             variant="Standard"
             density="Default"
-            className="border border-stroke-default hover:border-stroke-emphasis transition-all duration-150 flex flex-col justify-between cursor-pointer group"
+            className="bg-surface-100 border border-stroke-default hover:border-stroke-emphasis transition-all duration-150 flex flex-col justify-between cursor-pointer group rounded-large"
             onClick={() => setSelectedProject(project)}
             leading={<Icon name={getProjectIcon(project.id) as any} size="Medium" className="content-emphasis group-hover:scale-110 transition-transform" />}
             title={
@@ -133,8 +133,8 @@ export function ProjectsView() {
           open={!!selectedProject}
           onOpenChange={(open) => !open && setSelectedProject(null)}
         >
-          <DialogContent className="max-w-2xl bg-surface-100 border border-stroke-default rounded-xl overflow-hidden shadow-2xl">
-            <DialogHeroMedia className="bg-surface-0 border-b border-stroke-default px-6 py-4 flex items-center pr-16">
+          <DialogContent className="max-w-2xl bg-surface-100 border border-stroke-default rounded-large overflow-hidden shadow-2xl">
+            <DialogHeroMedia className="bg-surface-200/50 border-b border-stroke-default px-6 py-4 flex items-center pr-16">
               <div className="flex items-center gap-small">
                 <div className="p-2 rounded-small bg-surface-200">
                   <Icon name={getProjectIcon(selectedProject.id) as any} size="Large" className="content-emphasis" />
