@@ -20,7 +20,7 @@ export const environmentSpecs: HardwareSpec[] = [
       { label: "window manager", value: "hyprland v0.57.1 (wlroots)" },
       { label: "xwayland bridge", value: "xwayland v24.1.14" },
       { label: "audio server", value: "pipewire v1.6.9 + wireplumber" },
-      { label: "displays", value: "1080p internal 60hz + 1200p external" },
+      { label: "displays", value: "wuxga internal (1920x1200 60hz) + 1080p external" },
     ],
   },
   {

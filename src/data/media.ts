@@ -4,12 +4,12 @@ export const mediaData: MediaCaptureItem[] = [
   {
     id: "desktop-current",
     title: "wayland desktop session",
-    subtitle: "hyprland 0.57.1 with quickshell status bar on 1080p canvas",
+    subtitle: "hyprland 0.57.1 with quickshell status bar on external 1080p canvas",
     type: "image",
     src: "./media/desktop.png",
     tag: "screenshot",
-    resolution: "1920x1080 · 60hz",
-    description: "active desktop on thinkpad t16 gen 1 with quickshell bar, dolphin open in media folder, and full-bleed wallpaper.",
+    resolution: "1920x1080 · 60hz (external)",
+    description: "active desktop session output to external 1080p display paired with thinkpad t16 gen 1 internal wuxga panel.",
     timestamp: "2026-11-07 16:06",
   },
   {
