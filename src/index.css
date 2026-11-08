@@ -135,3 +135,29 @@ body {
 .stroke-standard:not([class*="stroke-emphasis"]):not([class*="stroke-muted"]):not([class*="stroke-system"]):not([class*="stroke-contrast"]) {
   border-color: var(--color-stroke-default);
 }
+
+/* CRT scanline aesthetic overlay */
+.crt-scanlines {
+  background: linear-gradient(
+      rgba(18, 16, 16, 0) 50%,
+      rgba(0, 0, 0, 0.3) 50%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.03),
+      rgba(0, 255, 0, 0.01),
+      rgba(0, 0, 255, 0.03)
+    );
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+}
+
+/* Modern web standards: prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

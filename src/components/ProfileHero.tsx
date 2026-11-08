@@ -4,7 +4,7 @@ import { profileData } from "../data/profile";
 import { useTheme } from "../context/ThemeContext";
 
 export function ProfileHero() {
-  const { avatarSrc, avatarInitials, setIsAvatarDialogOpen } = useTheme();
+  const { avatarSrc, avatarInitials, setIsAvatarDialogOpen, statusMood, playSound } = useTheme();
 
   return (
     <div className="bg-surface-100 stroke-standard stroke-default radius-large padding-large sm:padding-xlarge transition-colors">
@@ -12,10 +12,13 @@ export function ProfileHero() {
         <div className="flex items-start sm:items-center gap-medium min-width-0">
           <button
             type="button"
-            onClick={() => setIsAvatarDialogOpen(true)}
+            onClick={() => {
+              playSound("pop");
+              setIsAvatarDialogOpen(true);
+            }}
             className="group relative cursor-pointer radius-circle padding-none stroke-none bg-none outline-none focus-visible:outline-focus shrink-0 transition-transform active:scale-95"
             aria-label="switch profile picture"
-            title="click to change profile picture"
+            title="click to change persona and mood"
           >
             <Avatar
               src={avatarSrc}
@@ -35,7 +38,17 @@ export function ProfileHero() {
               <h1 className="text-heading-large font-extended content-emphasis tracking-tight text-truncate-end lowercase">
                 {profileData.handle}
               </h1>
-              <Badge label="in experience" size="Small" variant="Success" />
+              <button
+                type="button"
+                onClick={() => {
+                  playSound("pop");
+                  setIsAvatarDialogOpen(true);
+                }}
+                className="padding-none stroke-none bg-none outline-none cursor-pointer flex items-center"
+                title="click to change status mood"
+              >
+                <Badge label={statusMood} size="Small" variant="Success" />
+              </button>
             </div>
 
             <div className="flex flex-wrap items-center gap-xsmall text-body-medium content-muted padding-top-xxsmall">

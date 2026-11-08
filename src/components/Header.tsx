@@ -4,7 +4,16 @@ import { useTheme } from "../context/ThemeContext";
 
 export function Header() {
   const [time, setTime] = useState("");
-  const { setIsSettingsOpen, avatarSrc, avatarInitials, setIsAvatarDialogOpen } = useTheme();
+  const {
+    setIsSettingsOpen,
+    avatarSrc,
+    avatarInitials,
+    setIsAvatarDialogOpen,
+    setIsShortcutsOpen,
+    soundEnabled,
+    setSoundEnabled,
+    playSound,
+  } = useTheme();
 
   useEffect(() => {
     const updateTime = () => {
@@ -26,9 +35,12 @@ export function Header() {
         <div className="flex items-center gap-small min-width-0">
           <button
             type="button"
-            onClick={() => setIsAvatarDialogOpen(true)}
+            onClick={() => {
+              playSound("pop");
+              setIsAvatarDialogOpen(true);
+            }}
             className="group cursor-pointer padding-none stroke-none bg-none outline-none flex items-center shrink-0"
-            title="switch profile picture"
+            title="switch persona & mood"
           >
             <Avatar
               src={avatarSrc}
@@ -44,7 +56,7 @@ export function Header() {
           </span>
         </div>
 
-        {/* Telemetry + Settings */}
+        {/* Telemetry + Shortcuts + Settings */}
         <div className="flex items-center gap-small text-label-small content-muted shrink-0 font-mono">
 
           {/* Online + Time */}
@@ -67,10 +79,54 @@ export function Header() {
             </span>
           </div>
 
+          {/* Mechanical Audio Mute Toggle */}
+          <button
+            type="button"
+            onClick={() => {
+              const next = !soundEnabled;
+              setSoundEnabled(next);
+              playSound("clicky");
+            }}
+            className="foundation-web-button relative clip group/interactable focus-visible:outline-focus cursor-pointer hidden sm:flex items-center justify-center bg-shift-100 padding-x-small padding-y-xsmall radius-small content-default shrink-0 stroke-none"
+            title={soundEnabled ? "mute mechanical clicks (press M)" : "enable mechanical clicks (press M)"}
+          >
+            <div
+              aria-hidden="true"
+              data-testid="foundation-web-state-layer"
+              className="absolute inset-[0] transition-colors group-hover/interactable:bg-[var(--color-state-hover)] group-active/interactable:bg-[var(--color-state-press)]"
+            />
+            <Icon
+              name={soundEnabled ? "icon-regular-speaker" : "icon-regular-speaker-slash"}
+              size="Small"
+              className="relative z-10"
+            />
+          </button>
+
+          {/* Keyboard Shortcuts Trigger */}
+          <button
+            type="button"
+            onClick={() => {
+              playSound("pop");
+              setIsShortcutsOpen(true);
+            }}
+            className="foundation-web-button relative clip group/interactable focus-visible:outline-focus cursor-pointer hidden sm:flex items-center justify-center bg-shift-100 padding-x-small padding-y-xsmall radius-small content-default shrink-0 stroke-none"
+            title="keyboard shortcuts (press ?)"
+          >
+            <div
+              aria-hidden="true"
+              data-testid="foundation-web-state-layer"
+              className="absolute inset-[0] transition-colors group-hover/interactable:bg-[var(--color-state-hover)] group-active/interactable:bg-[var(--color-state-press)]"
+            />
+            <Icon name="icon-regular-keyboard" size="Small" className="relative z-10" />
+          </button>
+
           {/* Settings — Native Foundation Button */}
           <button
             type="button"
-            onClick={() => setIsSettingsOpen(true)}
+            onClick={() => {
+              playSound("pop");
+              setIsSettingsOpen(true);
+            }}
             className="foundation-web-button relative clip group/interactable focus-visible:outline-focus cursor-pointer flex items-center justify-center bg-shift-100 padding-x-small padding-y-xsmall radius-small content-default gap-xsmall shrink-0 stroke-none"
             aria-label="theme settings"
           >
@@ -78,7 +134,7 @@ export function Header() {
               aria-hidden="true"
               data-testid="foundation-web-state-layer"
               className="absolute inset-[0] transition-colors group-hover/interactable:bg-[var(--color-state-hover)] group-active/interactable:bg-[var(--color-state-press)]"
-            ></div>
+            />
             <span className="lowercase relative z-10">settings</span>
             <Icon name="icon-regular-gear" size="Small" className="relative z-10" />
           </button>
